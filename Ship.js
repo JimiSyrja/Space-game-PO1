@@ -17,7 +17,7 @@ class Ship{
   }
 }
 
-
+//Maakt de ships
 var ship1, ship2;
 
 
