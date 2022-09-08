@@ -1,24 +1,28 @@
 class Ship{
-  constructor(x1, y1, x2, y2, x3, y3,c){
-    this.x1 = x1;
-    this.y1 = y1;
-    this.x2 = x2;
-    this.y2 = y2;
-    this.x3 = x3;
-    this.y3= y3;
+  constructor(x, y, w, h, vx, vy,c){
+    this.x = x;
+    this.y = y;
+    this.width = w;
+    this.height = h;
+    this.vx = vx;
+    this.vy = vy;
     this.color = c;
   }
 
   draw(){
     fill(this.color)
-    triangle(this.x1, this.y1,this.x2, this.y2, this.x3, this.y3)
+    ellipse(this.x, this.y, this.width, this.heigth, this.vx, this.vy)
     this.x = this.x + this.vx;
     this.y = this.y + this.vy;
+
+    if(ship1.y == 0){
+      ship1.y = 500
+      
+    }
   }
 }
 
 //Maakt de ships
 var ship1, ship2;
-
 
 
