@@ -8,10 +8,10 @@ function setup() {
   ship1 = new Ship(125, 500, 30, 40, 0, -2, 'red')
   ship2 = new Ship(375,500,30,40,0,-2,'green');
 
-  for(var i = 0; i < 100; i++){
+  for(var i = 0; i < 30; i++){
     let randomY = Math.floor(Math.random() * 400);
     let randomX = Math.floor(Math.random() * 500);
-    let randomV = Math.floor(Math.random() * 10) + 1;
+    let randomV = Math.floor(Math.random() * 7) + 1;
     balls.push(new Ball(randomX,randomY,10,10,randomV,0,"white"));
   }
 }
