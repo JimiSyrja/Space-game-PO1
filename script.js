@@ -6,7 +6,7 @@ function setup() {
   background(3, 13, 106)
 
   ship1 = new Ship(125, 500, 30, 40, 0, -2, 'red')
-  ship2 = new Ship(375,500,30,40,0,-2,'green');
+  //ship2 = new Ship(375,500,30,40,0,-2,'green');
 
   for(var i = 0; i < 30; i++){
     let randomY = Math.floor(Math.random() * 400);
@@ -22,7 +22,7 @@ function draw() {
 	background(3, 13, 106);  
   
  ship1.draw();
- ship2.draw();
+ //ship2.draw();
 
   balls.forEach(b => {
     b.draw();
