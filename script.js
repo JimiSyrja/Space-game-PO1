@@ -20,8 +20,7 @@ function setup() {
 function draw() {
 	background(bg);  
   
- Ship(raket)
- //ship2.draw();
+ Ship.show();
 
   balls.forEach(b => {
     b.draw();
