@@ -1,11 +1,10 @@
-
+//let bg;
 balls = [];
+var Ship;
 
 function setup() {
-  createCanvas(500, 600);
-  background(3, 13, 106)
-
-  ship1 = new Ship(125, 500, 30, 40, 0, -2, 'red')
+  createCanvas(720, 400);
+  //ship = new Ship(raket, 125, 500, 100, 40, 50,0, -2)
   //ship2 = new Ship(375,500,30,40,0,-2,'green');
 
   for(var i = 0; i < 30; i++){
@@ -19,15 +18,19 @@ function setup() {
 
 
 function draw() {
-	background(3, 13, 106);  
+	background(bg);  
   
- ship1.draw();
+ Ship(raket)
  //ship2.draw();
 
   balls.forEach(b => {
     b.draw();
-  })
+  }
 }
 
 
 
+function preload(){
+  bg = loadImage('img/background.jpg');
+  raket = loadImage("img/raket.png")
+}
