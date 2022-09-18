@@ -14,7 +14,7 @@ class Ball {
     ellipse(this.x,this.y,this.width,this.heigth);
    this.x = this.x + this.vx;
 
-    if(this.x < 0 || this.x >= 500){
+    if(this.x < 0 || this.x >= 720){
       this.vx = this.vx * -1;
     }
   }
