@@ -4,8 +4,7 @@ var Ship;
 
 function setup() {
   createCanvas(720, 400);
-  //ship = new Ship(raket, 125, 500, 100, 40, 50,0, -2)
-  //ship2 = new Ship(375,500,30,40,0,-2,'green');
+
 
   for(var i = 0; i < 30; i++){
     let randomY = Math.floor(Math.random() * 400);
@@ -25,7 +24,7 @@ function draw() {
   balls.forEach(b => {
     b.draw();
   }
-}
+)}
 
 
 
