@@ -1,18 +1,17 @@
 class Player {
   constructor(){
-    this.playerHeight = 40;
+    this.playerHeight = 20;
     this.playerWidth = 20;
-    this.radius = 20;
     this.xpos = 200;
     this.ypos = 300;
-    this.speed = speed;
+    this.speed = 10;
   }
 
-  
+  draw(){
+    rect(this.xpos, this.ypos, this.playerWidth, this.playerHeight);
+  }
 
   move() {
-      // Pas op dat je speler hiermee uit het veld kan lopen!
-      // Pas de code aan zodat dat niet kan gebeuren
       if (keyIsDown(UP_ARROW)){
         this.ypos -= this.speed;
       } else if (keyIsDown(DOWN_ARROW)){

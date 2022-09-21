@@ -1,7 +1,10 @@
-balls = [];
+var balls = [];
+var ship;
 
 function setup() {
   createCanvas(720, 400);
+
+  ship = new Player();
 
 //laat de asteroids random aantallen spawnen
   for(var i = 0; i < 30; i++){
@@ -22,8 +25,11 @@ function draw() {
 
   balls.forEach(b => {
     b.draw();
-  }
-)}
+  });
+  
+  ship.draw();
+  ship.move();
+}
 
 
 
