@@ -13,9 +13,13 @@ class Ball {
    fill(this.color)
     ellipse(this.x,this.y,this.width,this.heigth);
    this.x = this.x + this.vx;
+   this.y = this.y + this.vy;
 
     if(this.x < 0 || this.x >= 720){
       this.vx = this.vx * -1;
+    }
+     if(this.y < 0 || this.y >= 350){
+      this.vy = this.vy * -1;
     }
   }
 }
