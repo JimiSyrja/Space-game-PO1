@@ -9,6 +9,9 @@ class Player {
 
   draw(){
     rect(this.xpos, this.ypos, this.playerWidth, this.playerHeight);
+    if(ship.ypos == 0){
+     ship.ypos = 500
+    }
   }
 
   move() {
