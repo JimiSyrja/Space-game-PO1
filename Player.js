@@ -4,13 +4,16 @@ class Player {
     this.playerWidth = 20;
     this.xpos = 200;
     this.ypos = 300;
-    this.speed = 10;
+    this.speed = 5;
   }
 
   draw(){
     rect(this.xpos, this.ypos, this.playerWidth, this.playerHeight);
-    if(ship.ypos == 0){
+    if(ship.ypos < 0){
      ship.ypos = 400
+    }
+    if(ship.ypos > 375){
+     ship.ypos = 375
     }
     if(ship.xpos < 0){
      ship.xpos = 0
