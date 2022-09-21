@@ -1,5 +1,6 @@
 var balls = [];
 var ship;
+var score = 0;
 
 function setup() {
   createCanvas(720, 400);
@@ -7,7 +8,7 @@ function setup() {
   ship = new Player();
 
 //laat de asteroids random aantallen spawnen
-  for(var i = 0; i < 70; i++){
+  for(var i = 0; i < 100; i++){
     let randomY = Math.floor(Math.random() * 300);
     let randomX = Math.floor(Math.random() * 700);
     let randomVx = Math.floor(Math.random() * 5) + 1;
@@ -18,8 +19,13 @@ function setup() {
 
 function display() {
     // Spawnt de speler
-    
     rect(this.xpos, this.ypos, this.playerHeight, this.playerWidth);
+
+
+    fill(255,255,255);
+    textSize(5);
+    textAlign(LEFT);
+    text('Score: '+ score, 350,330);
   }
 
 function draw() {

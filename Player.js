@@ -13,6 +13,7 @@ class Player {
     
     if(ship.ypos < 0){
      ship.ypos = 400
+      score = score + 1;
     }
     if(ship.ypos > 375){
      ship.ypos = 375
