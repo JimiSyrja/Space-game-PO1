@@ -30,7 +30,8 @@ function display() {
 
 function draw() {
 	background(bg);  
-
+  
+  
   balls.forEach(b => {
     b.draw();
   });
@@ -43,4 +44,5 @@ function draw() {
 
 function preload(){
   bg = loadImage('img/background.jpg');
+  img1 = loadImage('img/SpaceShip1.jpg');
 }
