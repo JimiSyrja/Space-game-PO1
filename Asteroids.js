@@ -11,11 +11,11 @@ class Ball {
   
    draw(){
    fill(this.color)
-    ellipse(this.x,this.y,this.width,this.heigth);
+   image(img2, this.x,this.y,this.width,this.heigth);
    this.x = this.x + this.vx;
    this.y = this.y + this.vy;
 
-    if(this.x < 0 || this.x >= 720){
+    if(this.x < 0 || this.x >= 425){
       this.vx = this.vx * -1;
     }
      if(this.y < 0 || this.y >= 350){

@@ -3,14 +3,14 @@ var ship;
 var score = 0;
 
 function setup() {
-  createCanvas(720, 400);
+  createCanvas(425, 550);
 
   ship = new Player();
 
 //laat de asteroids random aantallen spawnen
-  for(var i = 0; i < 75; i++){
-    let randomY = Math.floor(Math.random() * 300);
-    let randomX = Math.floor(Math.random() * 700);
+  for(var i = 0; i < 70; i++){
+    let randomY = Math.floor(Math.random() * 400);
+    let randomX = Math.floor(Math.random() * 425);
     let randomVx = Math.floor(Math.random() * 4) + 1;
     //let randomVy = Math.floor(Math.random() * 5) + 1;
     balls.push(new Ball(randomX,randomY,10,10,randomVx,0,"red"));
@@ -44,6 +44,7 @@ function draw() {
 
 
 function preload(){
-  bg = loadImage('img/background.jpg');
+  bg = loadImage('img/background1.jpg');
   img1 = loadImage('img/SpaceShip1.webp');
+  img2 = loadImage('img/BlueBird.png');
 }

@@ -3,7 +3,7 @@ class Player {
     this.playerHeight = 40;
     this.playerWidth = 30;
     this.xpos = width/4;
-    this.ypos =   370;
+    this.ypos =   500;
     this.speed = 5;
   }
 
@@ -12,17 +12,17 @@ class Player {
     image(img1, this.xpos, this.ypos, this.playerWidth, this.playerHeight);
     
     if(ship.ypos < 0){
-     ship.ypos = 400
+     ship.ypos = 525
       score = score + 1;
     }
-    if(ship.ypos > 375){
-     ship.ypos = 375
+    if(ship.ypos > 525){
+     ship.ypos = 525
     }
     if(ship.xpos < 0){
      ship.xpos = 0
     }
-    if(ship.xpos > 700){
-     ship.xpos = 700
+    if(ship.xpos > 400){
+     ship.xpos = 400
     }
   }
 
