@@ -8,7 +8,7 @@ function setup() {
   ship = new Player();
 
 //laat de asteroids random aantallen spawnen
-  for(var i = 0; i < 70; i++){
+  for(var i = 0; i < 40; i++){
     let randomY = Math.floor(Math.random() * 400);
     let randomX = Math.floor(Math.random() * 425);
     let randomVx = Math.floor(Math.random() * 4) + 1;
@@ -27,6 +27,14 @@ function display() {
     textAlign(LEFT);
     text('Score: '+ score, 350,330);
   }
+
+function menu() {
+  background(bg);
+  text("MENU", 25, 45);
+  text("1. menu", 25, 65);
+  text("2. start game", 25, 85);
+  text("3. game over", 25, 105);
+}
 
 function draw() {
 	background(bg);  
