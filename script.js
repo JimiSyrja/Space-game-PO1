@@ -11,22 +11,18 @@ function setup() {
   for(var i = 0; i < 40; i++){
     let randomY = Math.floor(Math.random() * 400);
     let randomX = Math.floor(Math.random() * 425);
-    let randomVx = Math.floor(Math.random() * 4) + 1;
+    let randomVx = Math.floor(Math.random() * 3) + 1;
     //let randomVy = Math.floor(Math.random() * 5) + 1;
     balls.push(new Ball(randomX,randomY,10,10,randomVx,0,"red"));
   }
 }
 
-function display() {
+//function display() {
     // Spawnt de speler
-    rect(this.xpos, this.ypos, this.playerHeight, this.playerWidth);
+    //rect(this.xpos, this.ypos, this.playerHeight, this.playerWidth);
 
 
-    fill(255,255,255);
-    textSize(5);
-    textAlign(LEFT);
-    text('Score: '+ score, 350,330);
-  }
+//}
 
 function menu() {
   background(bg);
@@ -39,6 +35,10 @@ function menu() {
 function draw() {
 	background(bg);  
   
+  fill(255,255,255);
+  textSize(10);
+  textAlign(CENTER);
+  text('Score: '+ score, width/4,500);
   
   balls.forEach(b => {
     b.draw();
