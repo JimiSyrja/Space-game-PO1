@@ -28,13 +28,13 @@ class Player2 {
   }
 
  move() {
-  if (key == 'w') {
+  if (keyIsDown(87)) {
     this.ypos2 -= this.speed2;
-  } else if (key == 's') {
+  } else if (keyIsDown(83)){
     this.ypos2 += this.speed2;
-  } else if (key == 'a') {
+  } else if (keyIsDown(65)) {
     this.xpos2 -= this.speed2;
-  } else if (key == 'd') {
+  } else if (keyIsDown(68)) {
     this.xpos2 += this.speed2;
   }
  }

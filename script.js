@@ -60,4 +60,6 @@ function preload(){
   img1 = loadImage('img/SpaceShip1.webp');
   img2 = loadImage('img/BlueBird.png');
   img3 = loadImage('img/SpaceShip2.webp');
+
+  
 }
