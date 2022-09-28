@@ -11,7 +11,7 @@ function setup() {
   ship2 = new Player2();
 
 //laat de asteroids random aantallen spawnen
-  for(var i = 0; i < 30; i++){
+  for(var i = 0; i < 40; i++){
     let randomY = Math.floor(Math.random() * 400);
     let randomX = Math.floor(Math.random() * 425);
     let randomVx = Math.floor(Math.random() * 3) + 1;
