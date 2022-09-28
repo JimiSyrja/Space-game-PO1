@@ -31,5 +31,14 @@ class Ball {
       ship.ypos = 460;
       console.log("hit")
     }
+    
+  if (this.x >= ship2.xpos2 && this.x <= (ship2.xpos2 + ship2.playerWidth2) &&
+      this.y >= ship2.ypos2 && this.y <= (ship2.ypos2 + ship2.playerHeight2)) {
+      ship2.xpos2 = 95; 
+      ship2.ypos2 = 460;
+      console.log("hit")
+    }
+    
   }
+  
 }
