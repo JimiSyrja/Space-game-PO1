@@ -2,9 +2,10 @@ var balls = [];
 var ship;
 var ship2;
 var score = 0;
+var score2 = 0;
 
 function setup() {
-  createCanvas(425, 550);
+  createCanvas(440, 550);
 
   ship = new Player();
   ship2 = new Player2();
@@ -42,6 +43,12 @@ function draw() {
   textFont('CASTELLAR');
   textAlign(CENTER);
   text('Player I : '+ score, width/4,520);
+
+  fill(255,255,255);
+  textSize(17);
+  textFont('CASTELLAR');
+  textAlign(CENTER);
+  text('Player II : '+ score, 335,520);
   
   balls.forEach(b => {
     b.draw();

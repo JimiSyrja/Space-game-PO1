@@ -2,7 +2,7 @@ class Player2 {
   constructor(){
     this.playerHeight2 = 30;
     this.playerWidth2 = 25;
-    this.xpos2 = 370;
+    this.xpos2 = 330;
     this.ypos2 = 460;
     this.speed2 = 5;
   }
@@ -13,7 +13,7 @@ class Player2 {
     
     if(ship2.ypos2 < 0){
      ship2.ypos2 = 525
-     ship2.xpos2 = 95
+     ship2.xpos2 = 320
       score = score + 1;
     }
     if(ship2.ypos2 > 467){
@@ -22,8 +22,8 @@ class Player2 {
     if(ship2.xpos2 < 0){
      ship2.xpos2 = 0
     }
-    if(ship2.xpos2 > 400){
-     ship2.xpos2 = 400
+    if(ship2.xpos2 > 415){
+     ship2.xpos2 = 415
     }
   }
 

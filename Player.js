@@ -22,8 +22,8 @@ class Player {
     if(ship.xpos < 0){
      ship.xpos = 0
     }
-    if(ship.xpos > 400){
-     ship.xpos = 400
+    if(ship.xpos > 415){
+     ship.xpos = 415
     }
   }
 

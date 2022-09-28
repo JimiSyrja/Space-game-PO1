@@ -15,7 +15,7 @@ class Ball {
    this.x = this.x + this.vx;
    this.y = this.y + this.vy;
 
-    if(this.x < 0 || this.x >= 425){
+    if(this.x < 0 || this.x >= 440){
       this.vx = this.vx * -1;
     }
      if(this.y < 0 || this.y >= 350){
@@ -34,7 +34,7 @@ class Ball {
     
   if (this.x >= ship2.xpos2 && this.x <= (ship2.xpos2 + ship2.playerWidth2) &&
       this.y >= ship2.ypos2 && this.y <= (ship2.ypos2 + ship2.playerHeight2)) {
-      ship2.xpos2 = 95; 
+      ship2.xpos2 = 320; 
       ship2.ypos2 = 460;
       console.log("hit")
     }
