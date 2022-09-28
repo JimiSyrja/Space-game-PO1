@@ -28,13 +28,13 @@ class Player {
   }
 
   move() {
-      if (keyIsDown(UP_ARROW)){
+      if (keyIsDown(87)){
         this.ypos -= this.speed;
-      } else if (keyIsDown(DOWN_ARROW)){
+      } else if (keyIsDown(83)){
         this.ypos += this.speed;
-      } else if (keyIsDown(LEFT_ARROW)){
+      } else if (keyIsDown(65)){
         this.xpos -= this.speed;
-      } else if (keyIsDown(RIGHT_ARROW)){
+      } else if (keyIsDown(68)){
         this.xpos += this.speed;
       }
   }
