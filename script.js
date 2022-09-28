@@ -1,12 +1,13 @@
 var balls = [];
 var ship;
+var ship2;
 var score = 0;
 
 function setup() {
   createCanvas(425, 550);
 
   ship = new Player();
-  //ship2 = new Player();
+  ship2 = new Player2();
 
 //laat de asteroids random aantallen spawnen
   for(var i = 0; i < 10; i++){
@@ -49,13 +50,14 @@ function draw() {
   
   ship.draw();
   ship.move();
+  ship2.draw();
+  ship2.move();
 }
-
-// ship2.draw()
 
 
 function preload(){
   bg = loadImage('img/background1.jpg');
   img1 = loadImage('img/SpaceShip1.webp');
   img2 = loadImage('img/BlueBird.png');
+  img3 = loadImage('img/SpaceShip2.webp');
 }
