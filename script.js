@@ -6,9 +6,10 @@ function setup() {
   createCanvas(425, 550);
 
   ship = new Player();
+  //ship2 = new Player();
 
 //laat de asteroids random aantallen spawnen
-  for(var i = 0; i < 40; i++){
+  for(var i = 0; i < 10; i++){
     let randomY = Math.floor(Math.random() * 400);
     let randomX = Math.floor(Math.random() * 425);
     let randomVx = Math.floor(Math.random() * 3) + 1;
@@ -36,9 +37,10 @@ function draw() {
 	background(bg);  
   
   fill(255,255,255);
-  textSize(10);
+  textSize(17);
+  textFont('CASTELLAR');
   textAlign(CENTER);
-  text('Score: '+ score, width/4,500);
+  text('Player I : '+ score, width/4,520);
   
   balls.forEach(b => {
     b.draw();
@@ -49,6 +51,7 @@ function draw() {
   ship.move();
 }
 
+// ship2.draw()
 
 
 function preload(){
