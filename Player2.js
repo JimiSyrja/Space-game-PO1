@@ -14,7 +14,7 @@ class Player2 {
     if(ship2.ypos2 < 0){
      ship2.ypos2 = 525
      ship2.xpos2 = 320
-      score = score + 1;
+      score2 = score2 + 1;
     }
     if(ship2.ypos2 > 467){
      ship2.ypos2 = 467

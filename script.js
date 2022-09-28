@@ -48,7 +48,7 @@ function draw() {
   textSize(17);
   textFont('CASTELLAR');
   textAlign(CENTER);
-  text('Player II : '+ score, 335,520);
+  text('Player II : '+ score2, 335,520);
   
   balls.forEach(b => {
     b.draw();
