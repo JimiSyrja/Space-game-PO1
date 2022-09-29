@@ -4,6 +4,11 @@ var ship2;
 var score = 0;
 var score2 = 0;
 
+var timer = 50;
+
+var gameState = 0;
+
+
 function setup() {
   createCanvas(440, 550);
 
@@ -27,28 +32,26 @@ function setup() {
 
 //}
 
-function menu() {
-  background(bg);
-  text("MENU", 25, 45);
-  text("1. menu", 25, 65);
-  text("2. start game", 25, 85);
-  text("3. game over", 25, 105);
+function draw() {
+ if (gameState == 0){
+   menu();
+ }
+  
+   if (gameState == 1){
+   game();
+     
+ } if (gameState == 2){
+   win();
+     
+ } if (gameState == 3){
+   gameOver();
+ }
 }
 
-function draw() {
+function game() {
 	background(bg);  
-  
-  fill(255,255,255);
-  textSize(17);
-  textFont('CASTELLAR');
-  textAlign(CENTER);
-  text('Player I : '+ score, width/4,520);
 
-  fill(255,255,255);
-  textSize(17);
-  textFont('CASTELLAR');
-  textAlign(CENTER);
-  text('Player II : '+ score2, 335,520);
+  drawUi();
   
   balls.forEach(b => {
     b.draw();
@@ -61,12 +64,66 @@ function draw() {
   ship2.move();
 }
 
+function menu(){
+ background (img4)
+
+  fill(4, 44, 220 );
+  textSize(60);
+  textFont('impact');
+  textAlign(CENTER);
+  text('Space Race', 220,120);
+
+  fill(255,255,255);
+  textSize(23);
+  textFont('CASTELLAR');
+  textAlign(CENTER);
+  text('Press Enter To Play The Game', 220,520);
+
+ if (keyCode == 13){
+  gameState = 1
+ }
+  
+}//close menu
+
+function gameOver(){
+  background(img5)
+}
+
+function drawUi(){
+    
+  fill(255,255,255);
+  textSize(17);
+  textFont('CASTELLAR');
+  textAlign(CENTER);
+  text('Player I : '+ score, width/4,520);
+
+  fill(255,255,255);
+  textSize(17);
+  textFont('CASTELLAR');
+  textAlign(CENTER);
+  text('Player II : '+ score2, 335,520);
+
+
+  fill(255,255,255);
+  textSize(20);
+  textFont('CASTELLAR');
+  textAlign(CENTER);
+  text('TIME: '+ timer + ' s', 220,100);
+
+  if(frameCount % 60 == 0){
+    timer -= 1;
+  }
+
+  if ( timer <= 0){
+    gameState = 3;
+  }
+}
 
 function preload(){
   bg = loadImage('img/background1.jpg');
   img1 = loadImage('img/SpaceShip1.webp');
   img2 = loadImage('img/BlueBird.png');
   img3 = loadImage('img/SpaceShip2.webp');
-
-  
+  img4 = loadImage('img/Menu.jpg');
+  img5 = loadImage('img/GameOver.jpg');
 }
