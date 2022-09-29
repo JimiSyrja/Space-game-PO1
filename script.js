@@ -4,7 +4,7 @@ var ship2;
 var score = 0;
 var score2 = 0;
 
-var timer = 50;
+var timer = 15;
 
 var gameState = 0;
 
@@ -87,6 +87,18 @@ function menu(){
 
 function gameOver(){
   background(img5)
+
+  fill(255,255,255);
+  textSize(17);
+  textFont('CASTELLAR');
+  textAlign(CENTER);
+  text('Player I : '+ score, width/4,520);
+
+  fill(255,255,255);
+  textSize(17);
+  textFont('CASTELLAR');
+  textAlign(CENTER);
+  text('Player II : '+ score2, 335,520);
 }
 
 function drawUi(){
@@ -125,5 +137,5 @@ function preload(){
   img2 = loadImage('img/BlueBird.png');
   img3 = loadImage('img/SpaceShip2.webp');
   img4 = loadImage('img/Menu.jpg');
-  img5 = loadImage('img/GameOver.jpg');
+  img5 = loadImage('img/GameOver.jpeg');
 }
