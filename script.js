@@ -71,7 +71,7 @@ function menu(){
   textSize(60);
   textFont('impact');
   textAlign(CENTER);
-  text('Space Race', 220,120);
+  text('Space Race', 220,100);
 
   fill(255,255,255);
   textSize(23);
