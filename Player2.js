@@ -38,5 +38,16 @@ class Player2 {
     this.xpos2 += this.speed2;
   }
  }
-}
 
+  checkCollision() {
+
+  if (this.xpos2 >= ship.xpos && this.xpos2 <= (ship.xpos + ship.playerWidth) &&
+      this.ypos2 >= ship.ypos && this.ypos2 <= (ship.ypos + ship.playerHeight)) {
+      ship2.xpos2 = 330; 
+      ship2.ypos2 = 460;
+      ship.xpos = 95;
+      ship.ypos = 460
+      console.log("hit")
+    }
+}
+}

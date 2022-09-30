@@ -4,7 +4,7 @@ var ship2;
 var score = 0;
 var score2 = 0;
 
-var timer = 15;
+var timer = 60;
 
 var gameState = 0;
 
@@ -16,7 +16,7 @@ function setup() {
   ship2 = new Player2();
 
 //laat de asteroids random aantallen spawnen
-  for(var i = 0; i < 40; i++){
+  for(var i = 0; i < 2; i++){
     let randomY = Math.floor(Math.random() * 400);
     let randomX = Math.floor(Math.random() * 425);
     let randomVx = Math.floor(Math.random() * 3) + 1;
@@ -57,11 +57,13 @@ function game() {
     b.draw();
     b.checkCollision();
   });
+
   
   ship.draw();
   ship.move();
   ship2.draw();
   ship2.move();
+  ship2.checkCollision();
 }
 
 function menu(){
@@ -69,7 +71,7 @@ function menu(){
 
   fill(4, 44, 220 );
   textSize(60);
-  textFont('impact');
+  textFont('Audiowide,bolder');
   textAlign(CENTER);
   text('Space Race', 220,100);
 
@@ -136,6 +138,6 @@ function preload(){
   img1 = loadImage('img/SpaceShip1.webp');
   img2 = loadImage('img/BlueBird.png');
   img3 = loadImage('img/SpaceShip2.webp');
-  img4 = loadImage('img/Menu.jpg');
+  img4 = loadImage('img/Menu.jpeg');
   img5 = loadImage('img/GameOver.jpeg');
 }
