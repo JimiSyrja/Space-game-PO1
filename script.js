@@ -4,7 +4,7 @@ var ship2;
 var score = 0;
 var score2 = 0;
 
-var timer = 60;
+var timer = 5;
 
 var gameState = 0;
 
@@ -90,6 +90,22 @@ function menu(){
 function gameOver(){
   background(img5)
 
+  fill(255,255,255 );
+  textSize(60);
+  textFont('Audiowide,bolder');
+  textAlign(CENTER);
+  text('Game Over', 220,200);
+
+  fill(255,255,255 );
+  textSize(30);
+  textFont('Audiowide,bolder');
+  textAlign(CENTER);
+  text('Press Enter To Play Again', 220,300);
+   
+  if (keyCode == 48){
+   gameState = 0
+  }
+  
   fill(255,255,255);
   textSize(17);
   textFont('CASTELLAR');
@@ -101,6 +117,8 @@ function gameOver(){
   textFont('CASTELLAR');
   textAlign(CENTER);
   text('Player II : '+ score2, 335,520);
+  
+  
 }
 
 function drawUi(){
