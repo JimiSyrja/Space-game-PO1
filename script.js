@@ -23,29 +23,20 @@ function setup() {
     //let randomVy = Math.floor(Math.random() * 5) + 1;
     balls.push(new Ball(randomX,randomY,10,10,randomVx,0,"red"));
   }
+
+  textAlign(CENTER);
 }
 
-//function display() {
-    // Spawnt de speler
-    //rect(this.xpos, this.ypos, this.playerHeight, this.playerWidth);
 
-
-//}
 
 function draw() {
- if (gameState == 0){
-   menu();
- }
-  
-   if (gameState == 1){
-   game();
-     
- } if (gameState == 2){
-   win();
-     
- } if (gameState == 3){
-   gameOver();
- }
+  if(gameState == 0){
+    menu();
+  } else if(gameState == 1){
+    game();
+  }else if(gameState == 2){
+    gameOver();
+  }
 }
 
 function game() {
@@ -68,7 +59,7 @@ function game() {
 
 function menu(){
  background (img4)
-
+  
   fill(4, 44, 220 );
   textSize(60);
   textFont('Audiowide,bolder');
@@ -81,45 +72,11 @@ function menu(){
   textAlign(CENTER);
   text('Press Enter To Play The Game', 220,520);
 
- if (keyCode == 13){
+ if (keyCode == 13){ 
   gameState = 1
  }
   
 }//close menu
-
-function gameOver(){
-  background(img5)
-
-  fill(255,255,255 );
-  textSize(60);
-  textFont('Audiowide,bolder');
-  textAlign(CENTER);
-  text('Game Over', 220,200);
-
-  fill(255,255,255 );
-  textSize(30);
-  textFont('Audiowide,bolder');
-  textAlign(CENTER);
-  text('Press Enter To Play Again', 220,300);
-   
-  if (keyCode == 48){
-   gameState = 0
-  }
-  
-  fill(255,255,255);
-  textSize(17);
-  textFont('CASTELLAR');
-  textAlign(CENTER);
-  text('Player I : '+ score, width/4,520);
-
-  fill(255,255,255);
-  textSize(17);
-  textFont('CASTELLAR');
-  textAlign(CENTER);
-  text('Player II : '+ score2, 335,520);
-  
-  
-}
 
 function drawUi(){
     
@@ -147,9 +104,56 @@ function drawUi(){
   }
 
   if ( timer <= 0){
-    gameState = 3;
+    gameState = 2;
+    timer = 5;
   }
 }
+
+
+function gameOver(){
+  background(img5)
+
+  if (score > score2){
+    text("Player 1 heeft gewonnen!!!",  220,420)
+  }
+  else if(score2 > score){
+    text("Player 2 heeft gewonnen!!!",  220,420)
+  }
+  else if(score == score2){
+    text("draw!!!", 220,420)
+  }
+  fill(255,255,255 );
+  textSize(60);
+  textFont('Audiowide,bolder');
+
+  text('Game Over', 220,200);
+
+  fill(255,255,255 );
+  textSize(30);
+  textFont('Audiowide,bolder');
+  text('Press 0 To Play Again', 220,300);
+   
+  if (keyCode == 48){
+   gameState = 0
+   score = 0;
+   score2 = 0;
+   setup();
+  }
+  
+  fill(255,255,255);
+  textSize(17);
+  textFont('CASTELLAR');
+  text('Player I : '+ score, width/4,520);
+
+  fill(255,255,255);
+  textSize(17);
+  textFont('CASTELLAR');
+  text('Player II : '+ score2, 335,520);
+  
+  
+}
+
+
 
 function preload(){
   bg = loadImage('img/background1.jpg');

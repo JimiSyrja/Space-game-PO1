@@ -8,7 +8,6 @@ class Player2 {
   }
 
   draw(){
-    //fill(250, 250, 51)
     image(img3, this.xpos2, this.ypos2, this.playerWidth2, this.playerHeight2);
     
     if(ship2.ypos2 < 0){
