@@ -3,11 +3,8 @@ var ship;
 var ship2;
 var score = 0;
 var score2 = 0;
-
-var timer = 5;
-
+var timer = 30;
 var gameState = 0;
-
 
 function setup() {
   createCanvas(440, 550);
@@ -16,7 +13,7 @@ function setup() {
   ship2 = new Player2();
 
 //laat de asteroids random aantallen spawnen
-  for(var i = 0; i < 2; i++){
+  for(var i = 0; i < 40; i++){
     let randomY = Math.floor(Math.random() * 400);
     let randomX = Math.floor(Math.random() * 425);
     let randomVx = Math.floor(Math.random() * 3) + 1;
@@ -26,7 +23,6 @@ function setup() {
 
   textAlign(CENTER);
 }
-
 
 
 function draw() {
@@ -105,7 +101,7 @@ function drawUi(){
 
   if ( timer <= 0){
     gameState = 2;
-    timer = 5;
+    timer = 30;
   }
 }
 

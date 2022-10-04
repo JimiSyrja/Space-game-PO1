@@ -1,1 +1,22 @@
 audio {display: none;}
+
+html, body {
+  
+  margin: 0;
+  padding: 0;
+  align-items: center;
+  display: flex;
+  
+}
+canvas {
+  
+  position: absolute;
+  top: 25%;
+  left: 10%;
+  display: block;
+  border: 15px solid #edce00;   
+  border-radius: 30px;
+  align-items: center;
+  display: flex;
+  
+}
