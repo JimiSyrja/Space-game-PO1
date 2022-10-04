@@ -6,13 +6,13 @@ html, body {
   padding: 0;
   align-items: center;
   display: flex;
-  
+  background: #2A4084;
 }
 canvas {
   
   position: absolute;
   top: 25%;
-  left: 10%;
+  left: 35%;
   display: block;
   border: 15px solid #edce00;   
   border-radius: 30px;
