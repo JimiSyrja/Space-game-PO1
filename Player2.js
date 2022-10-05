@@ -2,8 +2,8 @@ class Player2 {
   constructor(){
     this.playerHeight2 = 30;
     this.playerWidth2 = 25;
-    this.xpos2 = 330;
-    this.ypos2 = 460;
+    this.xpos2 = 450;
+    this.ypos2 = 725;
     this.speed2 = 5;
   }
 
@@ -42,10 +42,10 @@ class Player2 {
 
   if (this.xpos2 >= ship.xpos && this.xpos2 <= (ship.xpos + ship.playerWidth) &&
       this.ypos2 >= ship.ypos && this.ypos2 <= (ship.ypos + ship.playerHeight)) {
-      ship2.xpos2 = 330; 
-      ship2.ypos2 = 460;
+      ship2.xpos2 = 450; 
+      ship2.ypos2 = 725;
       ship.xpos = 95;
-      ship.ypos = 460
+      ship.ypos = 725
       console.log("hit")
     }
 }

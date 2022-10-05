@@ -7,7 +7,7 @@ var timer = 5;
 var gameState = 0;
 
 function setup() {
-  createCanvas(440, 550);
+  createCanvas(650, 800);
 
   ship = new Player();
   ship2 = new Player2();
@@ -19,8 +19,8 @@ newBallsPlease()
 function newBallsPlease(){
   //laat de asteroids random aantallen spawnen
   for(var i = 0; i < 50; i++){
-    let randomY = Math.floor(Math.random() * 400);
-    let randomX = Math.floor(Math.random() * 425);    
+    let randomY = Math.floor(Math.random() * 650);
+    let randomX = Math.floor(Math.random() * 600);    
     let randomVx = Math.floor(Math.random() * 3) + 1;
     if(Math.random() > 0.5){
       randomVx *= -1;
@@ -165,6 +165,6 @@ function preload(){
   img1 = loadImage('img/SpaceShip1.webp');
   img2 = loadImage('img/BlueBird.png');
   img3 = loadImage('img/SpaceShip2.webp');
-  img4 = loadImage('img/Menu.jpeg');
+  img4 = loadImage('img/Astronaut.jpg');
   img5 = loadImage('img/GameOver.jpeg');
 }
