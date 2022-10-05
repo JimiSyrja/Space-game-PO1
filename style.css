@@ -8,15 +8,12 @@ html, body {
   display: flex;
   background: #112152;
 }
-canvas {
-  
-  position: absolute;
-  top: 25%;
-  left: 35%;
-  display: block;
-  border: 15px solid #edce00;   
-  border-radius: 30px;
-  align-items: center;
+
+main{
   display: flex;
-  
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
 }

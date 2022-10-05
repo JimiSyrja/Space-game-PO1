@@ -3,7 +3,7 @@ var ship;
 var ship2;
 var score = 0;
 var score2 = 0;
-var timer = 30;
+var timer = 5;
 var gameState = 0;
 
 function setup() {
@@ -11,19 +11,25 @@ function setup() {
 
   ship = new Player();
   ship2 = new Player2();
-
-//laat de asteroids random aantallen spawnen
-  for(var i = 0; i < 40; i++){
-    let randomY = Math.floor(Math.random() * 400);
-    let randomX = Math.floor(Math.random() * 425);
-    let randomVx = Math.floor(Math.random() * 3) + 1;
-    //let randomVy = Math.floor(Math.random() * 5) + 1;
-    balls.push(new Ball(randomX,randomY,10,10,randomVx,0,"red"));
-  }
+newBallsPlease()
 
   textAlign(CENTER);
 }
 
+function newBallsPlease(){
+  //laat de asteroids random aantallen spawnen
+  for(var i = 0; i < 50; i++){
+    let randomY = Math.floor(Math.random() * 400);
+    let randomX = Math.floor(Math.random() * 425);    
+    let randomVx = Math.floor(Math.random() * 3) + 1;
+    if(Math.random() > 0.5){
+      randomVx *= -1;
+    }  
+    
+    //let randomVy = Math.floor(Math.random() * 5) + 1;
+    balls.push(new Ball(randomX,randomY,10,10,randomVx,0,"red"));
+  }
+}
 
 function draw() {
   if(gameState == 0){
@@ -101,7 +107,7 @@ function drawUi(){
 
   if ( timer <= 0){
     gameState = 2;
-    timer = 30;
+    timer = 5;
   }
 }
 
@@ -128,12 +134,16 @@ function gameOver(){
   textSize(30);
   textFont('Audiowide,bolder');
   text('Press 0 To Play Again', 220,300);
-   
+
+  
+  // 0
   if (keyCode == 48){
-   gameState = 0
-   score = 0;
-   score2 = 0;
-   setup();
+    gameState = 0
+    score = 0;
+    score2 = 0;
+    balls = [];
+    newBallsPlease();
+    //setup();
   }
   
   fill(255,255,255);
@@ -145,8 +155,7 @@ function gameOver(){
   textSize(17);
   textFont('CASTELLAR');
   text('Player II : '+ score2, 335,520);
-  
-  
+
 }
 
 
