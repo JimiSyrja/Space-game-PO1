@@ -7,7 +7,7 @@ var timer = 5;
 var gameState = 0;
 
 function setup() {
-  createCanvas(650, 800);
+  createCanvas(1200, 850);
 
   ship = new Player();
   ship2 = new Player2();
@@ -18,9 +18,9 @@ newBallsPlease()
 
 function newBallsPlease(){
   //laat de asteroids random aantallen spawnen
-  for(var i = 0; i < 50; i++){
-    let randomY = Math.floor(Math.random() * 650);
-    let randomX = Math.floor(Math.random() * 600);    
+  for(var i = 0; i < 100; i++){
+    let randomY = Math.floor(Math.random() * 675);
+    let randomX = Math.floor(Math.random() * 1200);    
     let randomVx = Math.floor(Math.random() * 3) + 1;
     if(Math.random() > 0.5){
       randomVx *= -1;
@@ -66,13 +66,13 @@ function menu(){
   textSize(60);
   textFont('Audiowide,bolder');
   textAlign(CENTER);
-  text('Space Race', 220,100);
+  text('Space Race', 600,200);
 
   fill(255,255,255);
   textSize(23);
   textFont('CASTELLAR');
   textAlign(CENTER);
-  text('Press Enter To Play The Game', 220,520);
+  text('Press Enter To Play The Game', 600,300);
 
  if (keyCode == 13){ 
   gameState = 1
@@ -86,20 +86,20 @@ function drawUi(){
   textSize(17);
   textFont('CASTELLAR');
   textAlign(CENTER);
-  text('Player I : '+ score, width/4,520);
+  text('Player I : '+ score, width/4,825);
 
   fill(255,255,255);
   textSize(17);
   textFont('CASTELLAR');
   textAlign(CENTER);
-  text('Player II : '+ score2, 335,520);
+  text('Player II : '+ score2, 900,825);
 
 
   fill(255,255,255);
   textSize(20);
   textFont('CASTELLAR');
   textAlign(CENTER);
-  text('TIME: '+ timer + ' s', 220,100);
+  text('TIME: '+ timer + ' s', width/2,100);
 
   if(frameCount % 60 == 0){
     timer -= 1;
@@ -116,24 +116,29 @@ function gameOver(){
   background(img5)
 
   if (score > score2){
-    text("Player 1 heeft gewonnen!!!",  220,420)
+    fill(213, 28, 28)
+    textSize(20);
+    textFont("Prismatic")
+    text("Player 1 heeft gewonnen!!!",  width/2,550)
   }
   else if(score2 > score){
-    text("Player 2 heeft gewonnen!!!",  220,420)
+    fill(213, 28, 28)
+    textSize(20);
+    textFont("Prismatic")
+    text("Player 2 heeft gewonnen!!!",  width/2,550)
   }
   else if(score == score2){
-    text("draw!!!", 220,420)
+    fill(213, 28, 28)
+    textSize(30);
+    textFont("PIXELFONT")
+    text("draw!!!", width/2,550)
   }
-  fill(255,255,255 );
-  textSize(60);
-  textFont('Audiowide,bolder');
-
-  text('Game Over', 220,200);
+  
 
   fill(255,255,255 );
   textSize(30);
   textFont('Audiowide,bolder');
-  text('Press 0 To Play Again', 220,300);
+  text('Press 0 To Play Again', width/2,675);
 
   
   // 0
@@ -149,12 +154,12 @@ function gameOver(){
   fill(255,255,255);
   textSize(17);
   textFont('CASTELLAR');
-  text('Player I : '+ score, width/4,520);
+  text('Player I : '+ score, 750,610);
 
   fill(255,255,255);
   textSize(17);
   textFont('CASTELLAR');
-  text('Player II : '+ score2, 335,520);
+  text('Player II : '+ score2, 450,610);
 
 }
 
@@ -166,5 +171,5 @@ function preload(){
   img2 = loadImage('img/BlueBird.png');
   img3 = loadImage('img/SpaceShip2.webp');
   img4 = loadImage('img/Astronaut.jpg');
-  img5 = loadImage('img/GameOver.jpeg');
+  img5 = loadImage('img/GameOver.jpg');
 }

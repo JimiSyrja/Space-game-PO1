@@ -15,10 +15,10 @@ class Ball {
    this.x = this.x + this.vx;
    this.y = this.y + this.vy;
 
-    if(this.x < 0 || this.x >= 440){
+    if(this.x < 0 || this.x >= 1200){
       this.vx = this.vx * -1;
     }
-     if(this.y < 0 || this.y >= 350){
+     if(this.y < 0 || this.y >= 800){
       this.vy = this.vy * -1;
     }
   }
@@ -27,15 +27,15 @@ class Ball {
 
   if (this.x >= ship.xpos && this.x <= (ship.xpos + ship.playerWidth) &&
       this.y >= ship.ypos && this.y <= (ship.ypos + ship.playerHeight)) {
-      ship.xpos = 95; 
-      ship.ypos = 460;
+      ship.xpos = 300; 
+      ship.ypos = 770;
       console.log("hit")
     }
     
   if (this.x >= ship2.xpos2 && this.x <= (ship2.xpos2 + ship2.playerWidth2) &&
       this.y >= ship2.ypos2 && this.y <= (ship2.ypos2 + ship2.playerHeight2)) {
-      ship2.xpos2 = 320; 
-      ship2.ypos2 = 460;
+      ship2.xpos2 = 900; 
+      ship2.ypos2 = 770;
       console.log("hit")
     }
     

@@ -2,8 +2,8 @@ class Player {
   constructor(){
     this.playerHeight = 35;
     this.playerWidth = 25;
-    this.xpos = 150;
-    this.ypos = 725;
+    this.xpos = 300;
+    this.ypos = 770;
     this.speed = 5;
   }
 
@@ -11,8 +11,8 @@ class Player {
     image(img1, this.xpos, this.ypos, this.playerWidth, this.playerHeight);
     
     if(ship.ypos < 0){
-     ship.ypos = 725
-     ship.xpos = 150
+     ship.xpos = 300
+     ship.ypos = 770
       score = score + 1;
     }
     if(ship.ypos > 775){
@@ -21,8 +21,8 @@ class Player {
     if(ship.xpos < 0){
      ship.xpos = 0
     }
-    if(ship.xpos > 585){
-     ship.xpos = 585
+    if(ship.xpos > 1185){
+     ship.xpos = 1185
     }
   }
 
