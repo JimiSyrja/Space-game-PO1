@@ -5,7 +5,7 @@ class Meteor{
   }
 
   draw(){
-    image(img6, this.x, this.y, 30);
+    image(img6, this.x, this.y, 30,30);
     this.y += 5;
   }
 }

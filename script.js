@@ -274,9 +274,9 @@ function gameOver(){
 function preload(){
   bg = loadImage('img/background1.jpg');
   img1 = loadImage('img/SpaceShip1.webp');
-  img2 = loadImage('img/BlueBird.png');
+  img2 = loadImage('img/Meteor.png');
   img3 = loadImage('img/SpaceShip2.webp');
   img4 = loadImage('img/Astronaut.jpg');
   img5 = loadImage('img/GameOver.jpg');
-  img6 = loadImage('img/meteor.png');
+  img6 = loadImage('img/BlueBird.png');
 }
