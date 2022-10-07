@@ -7,6 +7,8 @@ var score2 = 0;
 var timer = 30;
 var gameState = 0;
 
+let gif;
+
 
 function setup() {
   createCanvas(1200, 850);
@@ -49,10 +51,11 @@ function draw() {
 }
 
 function game() {
-	background(bg);  
+	  
 
   //Space Race
   if(gameState == 1){
+    background(bg);
     drawUi();
     
   balls.forEach(b => {
@@ -71,7 +74,8 @@ function game() {
 
   //Space Evade
   if(gameState == 2){
-     drawUi1();
+    background(img7);
+    drawUi1();
 
   if(frameCount % 5 == 0){
     // spawn!
@@ -282,6 +286,9 @@ function preload(){
   img4 = loadImage('img/Astronaut.jpg');
   img5 = loadImage('img/GameOver.jpg');
   img6 = loadImage('img/BlueBird.png');
+  img7 = loadImage('img/Background2.jpg');
 
+  //gif = loadImage('assets/Moon.gif');
+  
   //myFont = loadFont('joystix.zip');
 }
