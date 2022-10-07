@@ -278,4 +278,5 @@ function preload(){
   img3 = loadImage('img/SpaceShip2.webp');
   img4 = loadImage('img/Astronaut.jpg');
   img5 = loadImage('img/GameOver.jpg');
+  img6 = loadImage('img/meteor.png');
 }
