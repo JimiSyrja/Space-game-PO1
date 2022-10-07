@@ -1,16 +1,19 @@
 var balls = [];
 var ship;
 var ship2;
+var player3;
 var score = 0;
 var score2 = 0;
 var timer = 30;
 var gameState = 0;
+
 
 function setup() {
   createCanvas(1200, 850);
 
   ship = new Player();
   ship2 = new Player2();
+  player3 = new Player3();
 newBallsPlease()
 
   textAlign(CENTER);
@@ -48,6 +51,7 @@ function draw() {
 function game() {
 	background(bg);  
 
+  //Space Race
   if(gameState == 1){
     drawUi();
     
@@ -64,8 +68,24 @@ function game() {
   ship2.checkCollision();
     
   }
+
+  //Space Dodge
   if(gameState == 2){
      drawUi1();
+
+  if(frameCount % 5 == 0){
+    // spawn!
+    meteors.push(new Meteor());
+  }
+
+
+  meteors.forEach((m) => {
+    m.draw();
+  });
+
+  player3.draw();
+  player3.move();
+    
   }
   if(gameState == 3){
     drawUi2();
@@ -89,7 +109,7 @@ function menu(){
   textFont('CASTELLAR');
   textAlign(CENTER);
   text('Press 1 for Space Race', 600,250);
-  text('Press 2 for Space Dodge', 600,300);
+  text('Press 2 for Space Evade', 600,300);
   text('Press 3 for Space Maze', 600,350 );
 
  if (keyCode == 49){ 
