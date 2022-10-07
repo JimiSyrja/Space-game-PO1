@@ -8,21 +8,17 @@ class Meteor{
     image(img6, this.x, this.y, 30,30);
     this.y += 5;
   }
+
+  checkCollision() {
+
+  if (this.x >= player3.xpos3 && this.x <= (player3.xpos3 + player3.playerWidth3) &&
+      this.y >= player3.ypos3 && this.y <= (player3.ypos3 + player3.playerHeight3)) {
+      player3.xpos3 = 300; 
+      player3.ypos3 = 770;
+      console.log("hit")
+   }
+  }
 }
 
 var meteors = [];
 
-//function draw() {
-
-  // bij elke 50 frames voegen we een nieuwe Ball toe
-  // aan de lijst
-  //if(frameCount % 120 == 0){
-    // spawn!
-  //  meteors.push(new Meteor());
- // }
-
-
-//  meteors.forEach((m) => {
- //   m.draw();
-//  });
-//}

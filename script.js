@@ -23,14 +23,14 @@ function newBallsPlease(){
   //laat de asteroids random aantallen spawnen
   for(var i = 0; i < 100; i++){
     let randomY = Math.floor(Math.random() * 675);
-    let randomX = Math.floor(Math.random() * 1200);    
+    let randomX = Math.floor(Math.random() * 1200);       let randomR = Math.floor(Math.random() * 30) + 15;
     let randomVx = Math.floor(Math.random() * 3) + 1;
     if(Math.random() > 0.5){
       randomVx *= -1;
     }  
     
     //let randomVy = Math.floor(Math.random() * 5) + 1;
-    balls.push(new Ball(randomX,randomY,10,10,randomVx,0,"red"));
+    balls.push(new Ball(randomX,randomY,20,20,randomVx,0,"red"));
   }
 }
 
@@ -69,7 +69,7 @@ function game() {
     
   }
 
-  //Space Dodge
+  //Space Evade
   if(gameState == 2){
      drawUi1();
 
@@ -78,15 +78,18 @@ function game() {
     meteors.push(new Meteor());
   }
 
-
   meteors.forEach((m) => {
     m.draw();
+    m.checkCollision();
   });
 
   player3.draw();
   player3.move();
+  
     
   }
+  
+  //Space Maze
   if(gameState == 3){
     drawUi2();
   }
@@ -260,12 +263,12 @@ function gameOver(){
   fill(255,255,255);
   textSize(17);
   textFont('CASTELLAR');
-  text('Player I : '+ score, 750,610);
+  text('Player I : '+ score, 450,610);
 
   fill(255,255,255);
   textSize(17);
   textFont('CASTELLAR');
-  text('Player II : '+ score2, 450,610);
+  text('Player II : '+ score2, 750,610);
 
 }
 
@@ -279,4 +282,6 @@ function preload(){
   img4 = loadImage('img/Astronaut.jpg');
   img5 = loadImage('img/GameOver.jpg');
   img6 = loadImage('img/BlueBird.png');
+
+  //myFont = loadFont('joystix.zip');
 }
