@@ -3,7 +3,7 @@ var ship;
 var ship2;
 var score = 0;
 var score2 = 0;
-var timer = 5;
+var timer = 30;
 var gameState = 0;
 
 function setup() {
@@ -36,7 +36,11 @@ function draw() {
     menu();
   } else if(gameState == 1){
     game();
-  }else if(gameState == 2){
+  } else if(gameState == 2){
+    game();
+  } else if(gameState == 3){
+    game();
+  }else if(gameState == 4){
     gameOver();
   }
 }
@@ -44,12 +48,13 @@ function draw() {
 function game() {
 	background(bg);  
 
-  drawUi();
-  
+  if(gameState == 1){
+    drawUi();
+    
   balls.forEach(b => {
-    b.draw();
-    b.checkCollision();
-  });
+  b.draw();
+  b.checkCollision();
+   });
 
   
   ship.draw();
@@ -57,6 +62,17 @@ function game() {
   ship2.draw();
   ship2.move();
   ship2.checkCollision();
+    
+  }
+  if(gameState == 2){
+     drawUi1();
+  }
+  if(gameState == 3){
+    drawUi2();
+  }
+  
+  
+  
 }
 
 function menu(){
@@ -66,16 +82,24 @@ function menu(){
   textSize(60);
   textFont('Audiowide,bolder');
   textAlign(CENTER);
-  text('Space Race', 600,200);
+  text('Space Games', 600,200);
 
   fill(255,255,255);
   textSize(23);
   textFont('CASTELLAR');
   textAlign(CENTER);
-  text('Press Enter To Play The Game', 600,300);
+  text('Press 1 for Space Race', 600,250);
+  text('Press 2 for Space Dodge', 600,300);
+  text('Press 3 for Space Maze', 600,350 );
 
- if (keyCode == 13){ 
+ if (keyCode == 49){ 
   gameState = 1
+ }
+ if(keyCode == 50){
+   gameState = 2
+ }
+ if(keyCode == 51){
+   gameState = 3
  }
   
 }//close menu
@@ -106,15 +130,77 @@ function drawUi(){
   }
 
   if ( timer <= 0){
-    gameState = 2;
-    timer = 5;
+    gameState = 4;
+    timer = 30;
+  }
+}
+
+function drawUi1(){
+    
+  fill(255,255,255);
+  textSize(17);
+  textFont('CASTELLAR');
+  textAlign(CENTER);
+  text('Player I : '+ score, width/4,825);
+
+  fill(255,255,255);
+  textSize(17);
+  textFont('CASTELLAR');
+  textAlign(CENTER);
+  text('Player II : '+ score2, 900,825);
+
+
+  fill(255,255,255);
+  textSize(20);
+  textFont('CASTELLAR');
+  textAlign(CENTER);
+  text('TIME: '+ timer + ' s', width/2,100);
+
+  if(frameCount % 60 == 0){
+    timer -= 1;
+  }
+
+  if ( timer <= 0){
+    gameState = 4;
+    timer = 30;
+  }
+}
+
+function drawUi2(){
+    
+  fill(255,255,255);
+  textSize(17);
+  textFont('CASTELLAR');
+  textAlign(CENTER);
+  text('Player I : '+ score, width/4,825);
+
+  fill(255,255,255);
+  textSize(17);
+  textFont('CASTELLAR');
+  textAlign(CENTER);
+  text('Player II : '+ score2, 900,825);
+
+
+  fill(255,255,255);
+  textSize(20);
+  textFont('CASTELLAR');
+  textAlign(CENTER);
+  text('TIME: '+ timer + ' s', width/2,100);
+
+  if(frameCount % 60 == 0){
+    timer -= 1;
+  }
+
+  if ( timer <= 0){
+    gameState = 4;
+    timer = 30;
   }
 }
 
 
 function gameOver(){
   background(img5)
-
+  
   if (score > score2){
     fill(213, 28, 28)
     textSize(20);
