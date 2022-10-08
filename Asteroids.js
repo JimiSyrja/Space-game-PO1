@@ -18,15 +18,15 @@ class Ball {
     if(this.x < 0 || this.x >= 1200){
       this.vx = this.vx * -1;
     }
-     if(this.y < 0 || this.y >= 800){
-      this.vy = this.vy * -1;
-    }
   }
-
+  
   checkCollision() {
 
   if (this.x >= ship.xpos && this.x <= (ship.xpos + ship.playerWidth) &&
       this.y >= ship.ypos && this.y <= (ship.ypos + ship.playerHeight)) {
+      //image(gif1, ship.xpos, ship.ypos)
+      //gif.play();
+      //wait(1000);
       ship.xpos = 300; 
       ship.ypos = 770;
       console.log("hit")

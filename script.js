@@ -2,21 +2,24 @@ var balls = [];
 var ship;
 var ship2;
 var player3;
+var player4;
 var score = 0;
 var score2 = 0;
 var timer = 30;
 var gameState = 0;
-
+var start, current;
 let gif;
 
 
 function setup() {
-  createCanvas(1200, 850);
+  createCanvas(1200, 725);
 
   ship = new Player();
   ship2 = new Player2();
   player3 = new Player3();
-newBallsPlease()
+  player4 = new Player4();
+  
+  newBallsPlease()
 
   textAlign(CENTER);
 }
@@ -25,7 +28,7 @@ function newBallsPlease(){
   //laat de asteroids random aantallen spawnen
   for(var i = 0; i < 100; i++){
     let randomY = Math.floor(Math.random() * 675);
-    let randomX = Math.floor(Math.random() * 1200);       let randomR = Math.floor(Math.random() * 30) + 15;
+    let randomX = Math.floor(Math.random() * 1200);       //let randomR = Math.floor(Math.random() * 30) + 15;
     let randomVx = Math.floor(Math.random() * 3) + 1;
     if(Math.random() > 0.5){
       randomVx *= -1;
@@ -89,8 +92,8 @@ function game() {
 
   player3.draw();
   player3.move();
-  
-    
+  player4.draw();
+  player4.move();
   }
   
   //Space Maze
@@ -103,21 +106,21 @@ function game() {
 }
 
 function menu(){
- background (img4)
+ background (gif)
   
   fill(4, 44, 220 );
   textSize(60);
   textFont('Audiowide,bolder');
   textAlign(CENTER);
-  text('Space Games', 600,200);
+  text('Space Games', width/4,250);
 
   fill(255,255,255);
-  textSize(23);
+  textSize(25);
   textFont('CASTELLAR');
-  textAlign(CENTER);
-  text('Press 1 for Space Race', 600,250);
-  text('Press 2 for Space Evade', 600,300);
-  text('Press 3 for Space Maze', 600,350 );
+  textAlign(LEFT);
+  text('1 - Space Race', 150,350);
+  text('2 - Space Evade', 150,400);
+  text('3 - Space Maze', 150,450 );
 
  if (keyCode == 49){ 
   gameState = 1
@@ -251,7 +254,8 @@ function gameOver(){
   fill(255,255,255 );
   textSize(30);
   textFont('Audiowide,bolder');
-  text('Press 0 To Play Again', width/2,675);
+  text('Press 0 To go to menu', width/2,675);
+  text('Press enter to play again', width/2, 625)
 
   
   // 0
@@ -262,6 +266,13 @@ function gameOver(){
     balls = [];
     newBallsPlease();
     //setup();
+  }
+  if (keyCode == 13){
+    gameState = 1
+    score = 0;
+    score2 = 0;
+    balls = [];
+    newBallsPlease();
   }
   
   fill(255,255,255);
@@ -276,7 +287,14 @@ function gameOver(){
 
 }
 
-
+function wait(time){
+  start = millis()
+  do
+  {
+    current = millis();
+  }
+  while(current < start + time)
+}
 
 function preload(){
   bg = loadImage('img/background1.jpg');
@@ -288,7 +306,8 @@ function preload(){
   img6 = loadImage('img/BlueBird.png');
   img7 = loadImage('img/Background2.jpg');
 
-  //gif = loadImage('assets/Moon.gif');
+  gif = loadImage('assets/Moon.gif');
+  gif1 = loadImage('assets/explosion.gif');
   
   //myFont = loadFont('joystix.zip');
 }
