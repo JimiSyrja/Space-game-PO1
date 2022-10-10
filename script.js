@@ -10,6 +10,23 @@ var gameState = 0;
 var start, current;
 let gif;
 
+var shipImage;
+var shipImage2;
+var bulletImage;
+var bulletImage2;
+var ship3;
+var ship4;
+var bullets;
+var bullets2;
+
+
+var MARGIN = 40;
+var SHIP_NORMAL = 'normal';
+var SHIP_THRUST = 'thrust';
+
+var SHIP_NORMAL2 = 'normal';
+var SHIP_THRUST2 = 'thrust';
+
 
 function setup() {
   createCanvas(1200, 725);
@@ -27,7 +44,7 @@ function setup() {
 function newBallsPlease(){
   //laat de asteroids random aantallen spawnen
   for(var i = 0; i < 100; i++){
-    let randomY = Math.floor(Math.random() * 675);
+    let randomY = Math.floor(Math.random() * 625);
     let randomX = Math.floor(Math.random() * 1200);       //let randomR = Math.floor(Math.random() * 30) + 15;
     let randomVx = Math.floor(Math.random() * 3) + 1;
     if(Math.random() > 0.5){
@@ -37,7 +54,24 @@ function newBallsPlease(){
     //let randomVy = Math.floor(Math.random() * 5) + 1;
     balls.push(new Ball(randomX,randomY,20,20,randomVx,0,"red"));
   }
+
+  ship3 = createSprite(width / 4, height / 2);
+  ship3.maxSpeed = 6;
+  ship3.friction = 0.01;
+  ship3.addImage(SHIP_NORMAL, shipImage);
+  ship3.addAnimation(SHIP_THRUST, 'assets/asteroids_ship0002.png', 'assets/asteroids_ship0007.png');
+
+  ship4 = createSprite(900, height / 2);
+  ship4.maxSpeed = 6;
+  ship4.friction = 0.01;
+  ship4.addImage(SHIP_NORMAL2, shipImage2);
+  ship4.addAnimation(SHIP_THRUST2, 'assets/asteroids_ship0003.png', 'assets/asteroids_ship0006.png');
+
+
+  bullets = new Group();
+  bullets2 = new Group();
 }
+
 
 function draw() {
   if(gameState == 0){
@@ -98,6 +132,7 @@ function game() {
   
   //Space Maze
   if(gameState == 3){
+    background(img8);
     drawUi2();
   }
   
@@ -120,7 +155,7 @@ function menu(){
   textAlign(LEFT);
   text('1 - Space Race', 150,350);
   text('2 - Space Evade', 150,400);
-  text('3 - Space Maze', 150,450 );
+  text('3 - Space Fire', 150,450 );
 
  if (keyCode == 49){ 
   gameState = 1
@@ -132,7 +167,7 @@ function menu(){
    gameState = 3
  }
   
-}//close menu
+}
 
 function drawUi(){
     
@@ -197,35 +232,79 @@ function drawUi1(){
 }
 
 function drawUi2(){
+  for (var i = 0; i < allSprites.length; i++) {
+    var sprite = allSprites[i];
+    if (sprite.position.x < -MARGIN) {
+      sprite.position.x = width+MARGIN;
+    }
+    if (sprite.position.x > width + MARGIN) {
+      sprite.position.x = -MARGIN;
+    }
+    if (sprite.position.y < -MARGIN) {
+      sprite.position.y = height + MARGIN;
+    }
+    if (sprite.position.y > height + MARGIN) {
+      sprite.position.y = -MARGIN;
+    }
+  }
+
+  
+  if (keyDown(LEFT_ARROW)) {
+    ship3.rotation -= 4;
+  }
+  if (keyDown(RIGHT_ARROW)) {
+    ship3.rotation += 4;
+  }
+
+  if (keyDown(UP_ARROW)) {
+    ship3.addSpeed(0.2, ship3.rotation);
+    ship3.changeAnimation(SHIP_THRUST);
+  } else {
+    ship3.changeAnimation(SHIP_NORMAL);
+  }
+
+  if (keyWentDown('Enter')) {
+    var bullet = createSprite(ship3.position.x, ship3.position.y);
+    bullet.addImage(bulletImage);
+    bullet.setSpeed(10 + ship3.getSpeed(), ship3.rotation);
+    bullet.life = 30;
+    bullets.add(bullet);
+  }
+
+
     
-  fill(255,255,255);
-  textSize(17);
-  textFont('CASTELLAR');
-  textAlign(CENTER);
-  text('Player I : '+ score, width/4,825);
-
-  fill(255,255,255);
-  textSize(17);
-  textFont('CASTELLAR');
-  textAlign(CENTER);
-  text('Player II : '+ score2, 900,825);
-
-
-  fill(255,255,255);
-  textSize(20);
-  textFont('CASTELLAR');
-  textAlign(CENTER);
-  text('TIME: '+ timer + ' s', width/2,100);
-
-  if(frameCount % 60 == 0){
-    timer -= 1;
+    if (keyDown(65)) {
+    ship4.rotation -= 4;
+  }
+  if (keyDown(68)) {
+    ship4.rotation += 4;
   }
 
-  if ( timer <= 0){
-    gameState = 4;
-    timer = 30;
+  if (keyDown(87)) {
+    ship4.addSpeed(0.2, ship4.rotation);
+    ship4.changeAnimation(SHIP_THRUST2);
+  } else {
+    ship4.changeAnimation(SHIP_NORMAL2);
   }
+
+  if (keyWentDown('Space')) {
+    var bullet2 = createSprite(ship4.position.x, ship4.position.y);
+    bullet2.addImage(bulletImage2);
+    bullet2.setSpeed(10 + ship4.getSpeed(), ship4.rotation);
+    bullet2.life = 30;
+    bullets2.add(bullet2);
+  }
+
+  drawSprites();
+  
+  fill(255);
+  textAlign(CENTER);
+  textSize(40); 
+  text('Controls: Arrows + Ctrl', 600, 100);
+  text('Controls: WASD + Space', 600, 150);
 }
+
+
 
 
 function gameOver(){
@@ -305,9 +384,15 @@ function preload(){
   img5 = loadImage('img/GameOver.jpg');
   img6 = loadImage('img/BlueBird.png');
   img7 = loadImage('img/Background2.jpg');
+  img8 = loadImage('img/Background3.jpg');
+  shipImage = loadImage('assets/asteroids_ship0001.png');
+  bulletImage = loadImage('assets/asteroids_bullet.png');
+  shipImage2 = loadImage('assets/asteroids_ship0001.png');
+  bulletImage2 = loadImage('assets/asteroids_bullet.png');
 
   gif = loadImage('assets/Moon.gif');
   gif1 = loadImage('assets/explosion.gif');
-  
+
+ // font1 = loadFont('fonts/joystix.zip');
   //myFont = loadFont('joystix.zip');
 }

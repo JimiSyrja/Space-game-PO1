@@ -3,7 +3,7 @@ class Player3 {
     this.playerHeight3 = 35;
     this.playerWidth3 = 25;
     this.xpos3 = 300;
-    this.ypos3 = 770;
+    this.ypos3 = 600;
     this.speed3 = 5;
   }
 
