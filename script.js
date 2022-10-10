@@ -180,6 +180,8 @@ function menu(){
      }
    if(keyCode == 50){
      gameState = 2
+     lives3 = 5;
+     lives4 = 5;
      }
   if(keyCode == 51){
      gameState = 3
@@ -220,35 +222,6 @@ function drawUi(){
 }
 
 function drawUi1(){
-    
-  // fill(255,255,255);
-  // textSize(17);
-  // textFont('CASTELLAR');
-  // textAlign(CENTER);
-  // text('Player I : '+ score, width/4,825);
-
-  // fill(255,255,255);
-  // textSize(17);
-  // textFont('CASTELLAR');
-  // textAlign(CENTER);
-  // text('Player II : '+ score2, 900,825);
-
-
-  // fill(255,255,255);
-  // textSize(20);
-  // textFont('CASTELLAR');
-  // textAlign(CENTER);
-  // text('TIME: '+ timer + ' s', width/2,100);
-
-  // if(frameCount % 60 == 0){
-  //   timer -= 1;
-  // }
-
-  // if ( timer <= 0){
-  //   gameState = 4;
-  //   timer = 30;
-  //}
-
   //Levens
   fill(255, 0,0);
   textAlign(CENTER);
@@ -381,10 +354,10 @@ function gameOver(){
   textAlign(LEFT);
   textFont('Audiowide,bolder');
   text('Press Esc for menu', 100,50);
-  text('Press enter for again', 100, 100)
+  // text('Press enter for again', 100, 100)
 
   
-  // 0
+  // esc
   if (keyCode == 27){
     gameState = 0
     score = 0;
@@ -401,15 +374,15 @@ function gameOver(){
     //Deze werkt niet goed: Bij elk spel gaat die again naar Space Race
   //}
   
-  fill(255,255,255);
-  textSize(17);
-  textFont('CASTELLAR');
-  text('Player I : '+ score, 450,610);
+  // fill(255,255,255);
+  // textSize(17);
+  // textFont('CASTELLAR');
+  // text('Player I : '+ score, 450,610);
 
-  fill(255,255,255);
-  textSize(17);
-  textFont('CASTELLAR');
-  text('Player II : '+ score2, 750,610);
+  // fill(255,255,255);
+  // textSize(17);
+  // textFont('CASTELLAR');
+  // text('Player II : '+ score2, 750,610);
 
 }
 
