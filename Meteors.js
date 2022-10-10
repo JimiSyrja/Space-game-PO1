@@ -11,10 +11,10 @@ class Meteor{
 
   checkCollision() {
 
-  if (this.x >= player3.xpos3 && this.x <= (player3.xpos3 + player3.playerWidth3) &&
-      this.y >= player3.ypos3 && this.y <= (player3.ypos3 + player3.playerHeight3)) {
-      player3.xpos3 = 300; 
-      player3.ypos3 = 675;
+  if (this.x >= ship.xpos && this.x <= (ship.xpos + ship.playerWidth) &&
+      this.y >= ship.ypos && this.y <= (ship.ypos + ship.playerHeight)) {
+      ship.xpos = 300; 
+      ship.ypos = 675;
       console.log("hit")
    }
   }

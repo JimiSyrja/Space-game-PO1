@@ -1,7 +1,6 @@
 var balls = [];
 var ship;
 var ship2;
-var player3;
 var player4;
 var lives = 3;
 var score = 0;
@@ -34,7 +33,6 @@ function setup() {
 
     ship = new Player();
     ship2 = new Player2();
-    player3 = new Player3();
     player4 = new Player4();
   
     newBallsPlease()
@@ -100,7 +98,7 @@ function game1(){
 
   
   ship.draw();
-  ship.move();
+  ship.moveShip1();
   ship2.draw();
   ship2.move();
   ship2.checkCollision();
@@ -123,8 +121,8 @@ function game2() {
     m.checkCollision();
   });
 
-  ship.draw(player3);
-  ship.move(player3);
+  ship.draw();
+  ship.move();
   player4.draw();
   player4.move();
   } 

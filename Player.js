@@ -26,7 +26,7 @@ class Player {
     }
   }
  
-  move() {
+  moveShip1() {
       if (keyIsDown(87)){
         this.ypos -= this.speed;
       } else if (keyIsDown(83)){
@@ -38,13 +38,13 @@ class Player {
       }
   }
 
-  // move(player3){
-  //     if (keyIsDown(65)){
-  //       this.xpos3 -= this.speed3;
-  //     } if (keyIsDown(68)){
-  //       this.xpos3 += this.speed3;
-  //     }
-  //}
+  move(){
+      if (keyIsDown(65)){
+        this.xpos -= this.speed;
+      } if (keyIsDown(68)){
+        this.xpos += this.speed;
+      }
+  }
 }
 
   
