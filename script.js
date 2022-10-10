@@ -5,7 +5,7 @@ var player4;
 var lives = 3;
 var score = 0;
 var score2 = 0;
-var timer = 30;
+var timer = 5;
 var gameState = 0;
 var start, current;
 let gif;
@@ -54,13 +54,13 @@ function newBallsPlease(){
     balls.push(new             Ball(randomX,randomY,20,20,randomVx,0,"red"));
     }
 
-        ship3 = createSprite(width / 4, height / 2);
+        ship3 = createSprite(900, height / 2);
         ship3.maxSpeed = 6;
         ship3.friction = 0.01;
         ship3.addImage(SHIP_NORMAL, shipImage);
         ship3.addAnimation(SHIP_THRUST,                 'assets/asteroids_ship0002.png', 'assets/asteroids_ship0007.png');
 
-        ship4 = createSprite(900, height / 2);
+        ship4 = createSprite(width / 4, height / 2);
         ship4.maxSpeed = 6;
         ship4.friction = 0.01;
         ship4.addImage(SHIP_NORMAL2, shipImage2);
@@ -88,8 +88,8 @@ function draw() {
 
 function game1(){
   
-    background(bg);
-    drawUi();
+  background(bg);
+  drawUi();
     
   balls.forEach(b => {
   b.draw();
@@ -102,12 +102,18 @@ function game1(){
   ship2.draw();
   ship2.move();
   ship2.checkCollision();
-   
+
+  if (keyCode == 27){
+    gameState = 0
+    score = 0;
+    score2 = 0;
+    balls = [];
+    newBallsPlease();
+  }   
 }
 
 function game2() {
   //Space Evade
-  if(gameState == 2){
     background(img7);
     drawUi1();
 
@@ -124,16 +130,21 @@ function game2() {
   ship.draw();
   ship.move();
   player4.draw();
-  player4.move();
-  } 
+  player4.move(); 
+
+  if (keyCode == 27){
+    gameState = 0
+  }
 }
 
+//Space Maze
 function game3(){
-   //Space Maze
-  if(gameState == 3){
     background(img8);
     drawUi2();
- }
+
+  if (keyCode == 27){
+    gameState = 0
+  }
 }
 
 
@@ -157,6 +168,7 @@ function menu(){
 
    if (keyCode == 49){ 
     gameState = 1
+    timer = 5;
      }
    if(keyCode == 50){
      gameState = 2
@@ -193,7 +205,9 @@ function drawUi(){
 
   if ( timer <= 0){
     gameState = 4;
-    timer = 30;
+    // background(0);
+    // balls = [];
+    // text = [];
   }
 }
 
@@ -264,8 +278,9 @@ function drawUi2(){
     var bullet = createSprite(ship3.position.x, ship3.position.y);
     bullet.addImage(bulletImage);
     bullet.setSpeed(10 + ship3.getSpeed(), ship3.rotation);
-    bullet.life = 30;
+    bullet.life = 130;
     bullets.add(bullet);
+
   }
 
 
@@ -288,29 +303,40 @@ function drawUi2(){
     var bullet2 = createSprite(ship4.position.x, ship4.position.y);
     bullet2.addImage(bulletImage2);
     bullet2.setSpeed(10 + ship4.getSpeed(), ship4.rotation);
-    bullet2.life = 30;
+    bullet2.life = 130;
     bullets2.add(bullet2);
+
   }
 
   drawSprites();
   
   fill(255);
-  textAlign(CENTER);
-  textSize(40); 
-  text('Controls: Arrows + Enter', 600, 100);
-  text('Controls: WASD + Space', 600, 150);
-  text('lives: ' + lives, ship3.position.x, ship3.position.y);
-  text('lives: ' + lives, ship4.position.x, ship4.position.y);
+  textAlign(LEFT);
+  textSize(10); 
+  text('Controls: Arrows + Enter', 50, 50);
+  text('Controls: WASD + Space', 50, 75);
 
-// if(bullet.position.x >= ship4.position.x){
-  // console.log(lives)
-// }
+  //Levens
+  fill(255, 0,0);
+  textAlign(CENTER);
+  textSize(30); 
+  text('X' + lives, 1120, 60);
+  text('X' + lives, 1120, 115);
+
+  image(img9, 1140,27,50,50)
+  image(img9, 1140,80,50,50)
+
+
+if(bullets > ship4.position.x){
+     
+      lives = lives  - 1;
+    }
 }
 
 
 
 function gameOver(){
-  background(img5)
+  background(img4)
   
   if (score > score2){
     fill(213, 28, 28)
@@ -333,10 +359,11 @@ function gameOver(){
   
 
   fill(255,255,255 );
-  textSize(30);
+  textSize(15);
+  textAlign(LEFT);
   textFont('Audiowide,bolder');
-  text('Press Esc for menu', width/2,675);
-  text('Press enter for again', width/2, 625)
+  text('Press Esc for menu', 100,50);
+  text('Press enter for again', 100, 100)
 
   
   // 0
@@ -353,6 +380,7 @@ function gameOver(){
     score2 = 0;
     balls = [];
     newBallsPlease();
+    //Deze werkt niet goed: Bij elk spel gaat die again naar Space Race
   }
   
   fill(255,255,255);
@@ -381,11 +409,11 @@ function preload(){
   img1 = loadImage('img/SpaceShip1.webp');
   img2 = loadImage('img/Meteor.png');
   img3 = loadImage('img/SpaceShip2.webp');
-  img4 = loadImage('img/Astronaut.jpg');
-  img5 = loadImage('img/GameOver.jpg');
+  img4 = loadImage('img/GameoverSMB.webp');
   img6 = loadImage('img/BlueBird.png');
   img7 = loadImage('img/Background2.jpg');
   img8 = loadImage('img/Background3.jpg');
+  img9 = loadImage('img/heart.png');
   shipImage = loadImage('assets/asteroids_ship0001.png');
   bulletImage = loadImage('assets/asteroids_bullet.png');
   shipImage2 = loadImage('assets/asteroids_ship0001.png');
@@ -393,7 +421,4 @@ function preload(){
 
   gif = loadImage('assets/Moon.gif');
   gif1 = loadImage('assets/explosion.gif');
-
- // font1 = loadFont('fonts/joystix.zip');
-  //myFont = loadFont('joystix.zip');
 }
