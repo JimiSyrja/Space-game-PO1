@@ -3,6 +3,7 @@ var ship;
 var ship2;
 var player3;
 var player4;
+var lives = 3;
 var score = 0;
 var score2 = 0;
 var timer = 30;
@@ -29,22 +30,22 @@ var SHIP_THRUST2 = 'thrust';
 
 
 function setup() {
-  createCanvas(1200, 725);
+    createCanvas(1200, 725);
 
-  ship = new Player();
-  ship2 = new Player2();
-  player3 = new Player3();
-  player4 = new Player4();
+    ship = new Player();
+    ship2 = new Player2();
+    player3 = new Player3();
+    player4 = new Player4();
   
-  newBallsPlease()
+    newBallsPlease()
 
-  textAlign(CENTER);
+    textAlign(CENTER);
 }
 
 function newBallsPlease(){
   //laat de asteroids random aantallen spawnen
-  for(var i = 0; i < 100; i++){
-    let randomY = Math.floor(Math.random() * 625);
+    for(var i = 0; i < 100; i++){
+    let randomY = Math.floor(Math.random() * 615);
     let randomX = Math.floor(Math.random() * 1200);       //let randomR = Math.floor(Math.random() * 30) + 15;
     let randomVx = Math.floor(Math.random() * 3) + 1;
     if(Math.random() > 0.5){
@@ -52,46 +53,43 @@ function newBallsPlease(){
     }  
     
     //let randomVy = Math.floor(Math.random() * 5) + 1;
-    balls.push(new Ball(randomX,randomY,20,20,randomVx,0,"red"));
-  }
+    balls.push(new             Ball(randomX,randomY,20,20,randomVx,0,"red"));
+    }
 
-  ship3 = createSprite(width / 4, height / 2);
-  ship3.maxSpeed = 6;
-  ship3.friction = 0.01;
-  ship3.addImage(SHIP_NORMAL, shipImage);
-  ship3.addAnimation(SHIP_THRUST, 'assets/asteroids_ship0002.png', 'assets/asteroids_ship0007.png');
+        ship3 = createSprite(width / 4, height / 2);
+        ship3.maxSpeed = 6;
+        ship3.friction = 0.01;
+        ship3.addImage(SHIP_NORMAL, shipImage);
+        ship3.addAnimation(SHIP_THRUST,                 'assets/asteroids_ship0002.png', 'assets/asteroids_ship0007.png');
 
-  ship4 = createSprite(900, height / 2);
-  ship4.maxSpeed = 6;
-  ship4.friction = 0.01;
-  ship4.addImage(SHIP_NORMAL2, shipImage2);
-  ship4.addAnimation(SHIP_THRUST2, 'assets/asteroids_ship0003.png', 'assets/asteroids_ship0006.png');
+        ship4 = createSprite(900, height / 2);
+        ship4.maxSpeed = 6;
+        ship4.friction = 0.01;
+        ship4.addImage(SHIP_NORMAL2, shipImage2);
+        ship4.addAnimation(SHIP_THRUST2, 'assets/asteroids_ship0003.png', 'assets/asteroids_ship0006.png');
 
 
-  bullets = new Group();
-  bullets2 = new Group();
+    bullets = new Group();
+    bullets2 = new Group();
 }
 
 
 function draw() {
-  if(gameState == 0){
+      if(gameState == 0){
     menu();
   } else if(gameState == 1){
-    game();
+    game1(); 
   } else if(gameState == 2){
-    game();
+    game2();
   } else if(gameState == 3){
-    game();
+    game3();
   }else if(gameState == 4){
     gameOver();
   }
 }
 
-function game() {
-	  
-
-  //Space Race
-  if(gameState == 1){
+function game1(){
+  
     background(bg);
     drawUi();
     
@@ -106,9 +104,10 @@ function game() {
   ship2.draw();
   ship2.move();
   ship2.checkCollision();
-    
-  }
+   
+}
 
+function game2() {
   //Space Evade
   if(gameState == 2){
     background(img7);
@@ -124,49 +123,49 @@ function game() {
     m.checkCollision();
   });
 
-  player3.draw();
-  player3.move();
+  ship.draw(player3);
+  ship.move(player3);
   player4.draw();
   player4.move();
-  }
-  
-  //Space Maze
+  } 
+}
+
+function game3(){
+   //Space Maze
   if(gameState == 3){
     background(img8);
     drawUi2();
-  }
-  
-  
-  
+ }
 }
 
+
+
 function menu(){
- background (gif)
+    background (gif)
   
-  fill(4, 44, 220 );
-  textSize(60);
-  textFont('Audiowide,bolder');
-  textAlign(CENTER);
-  text('Space Games', width/4,250);
+    fill(4, 44, 220 );
+    textSize(60);
+    textFont('Audiowide,bolder');
+    textAlign(CENTER);
+    text('Space Games', width/4,250);
 
-  fill(255,255,255);
-  textSize(25);
-  textFont('CASTELLAR');
-  textAlign(LEFT);
-  text('1 - Space Race', 150,350);
-  text('2 - Space Evade', 150,400);
-  text('3 - Space Fire', 150,450 );
+    fill(255,255,255);
+    textSize(25);
+    textFont('CASTELLAR');
+    textAlign(LEFT);
+    text('1 - Space Race', 150,350);
+    text('2 - Space Evade', 150,400);
+    text('3 - Space Fire', 150,450 );
 
- if (keyCode == 49){ 
-  gameState = 1
- }
- if(keyCode == 50){
-   gameState = 2
- }
- if(keyCode == 51){
-   gameState = 3
- }
-  
+   if (keyCode == 49){ 
+    gameState = 1
+     }
+   if(keyCode == 50){
+     gameState = 2
+     }
+  if(keyCode == 51){
+     gameState = 3
+     }
 }
 
 function drawUi(){
@@ -175,13 +174,13 @@ function drawUi(){
   textSize(17);
   textFont('CASTELLAR');
   textAlign(CENTER);
-  text('Player I : '+ score, width/4,825);
+  text('Player I : '+ score, width/4,710);
 
   fill(255,255,255);
   textSize(17);
   textFont('CASTELLAR');
   textAlign(CENTER);
-  text('Player II : '+ score2, 900,825);
+  text('Player II : '+ score2, 900,710);
 
 
   fill(255,255,255);
@@ -300,10 +299,15 @@ function drawUi2(){
   fill(255);
   textAlign(CENTER);
   textSize(40); 
-  text('Controls: Arrows + Ctrl', 600, 100);
+  text('Controls: Arrows + Enter', 600, 100);
   text('Controls: WASD + Space', 600, 150);
-}
+  text('lives: ' + lives, ship3.position.x, ship3.position.y);
+  text('lives: ' + lives, ship4.position.x, ship4.position.y);
 
+// if(bullet.position.x >= ship4.position.x){
+  // console.log(lives)
+// }
+}
 
 
 
@@ -333,18 +337,17 @@ function gameOver(){
   fill(255,255,255 );
   textSize(30);
   textFont('Audiowide,bolder');
-  text('Press 0 To go to menu', width/2,675);
-  text('Press enter to play again', width/2, 625)
+  text('Press Esc for menu', width/2,675);
+  text('Press enter for again', width/2, 625)
 
   
   // 0
-  if (keyCode == 48){
+  if (keyCode == 27){
     gameState = 0
     score = 0;
     score2 = 0;
     balls = [];
     newBallsPlease();
-    //setup();
   }
   if (keyCode == 13){
     gameState = 1

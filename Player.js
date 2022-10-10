@@ -15,8 +15,8 @@ class Player {
      ship.ypos = 675
       score = score + 1;
     }
-    if(ship.ypos > 715){
-     ship.ypos = 715
+    if(ship.ypos > 700){
+     ship.ypos = 700
     }
     if(ship.xpos < 0){
      ship.xpos = 0
@@ -25,7 +25,7 @@ class Player {
      ship.xpos = 1185
     }
   }
-
+ 
   move() {
       if (keyIsDown(87)){
         this.ypos -= this.speed;
@@ -37,6 +37,14 @@ class Player {
         this.xpos += this.speed;
       }
   }
+
+  // move(player3){
+  //     if (keyIsDown(65)){
+  //       this.xpos3 -= this.speed3;
+  //     } if (keyIsDown(68)){
+  //       this.xpos3 += this.speed3;
+  //     }
+  //}
 }
 
   

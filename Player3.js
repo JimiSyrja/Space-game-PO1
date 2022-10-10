@@ -3,7 +3,7 @@ class Player3 {
     this.playerHeight3 = 35;
     this.playerWidth3 = 25;
     this.xpos3 = 300;
-    this.ypos3 = 600;
+    this.ypos3 = 675;
     this.speed3 = 5;
   }
 
@@ -16,6 +16,8 @@ class Player3 {
     if(player3.xpos3 > 1185){
      player3.xpos3 = 1185
     }
+
+    
   }
 
   move() {

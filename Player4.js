@@ -3,7 +3,7 @@ class Player4 {
     this.playerHeight4 = 30;
     this.playerWidth4 = 25;
     this.xpos4 = 900;
-    this.ypos4 = 770;
+    this.ypos4 = 675;
     this.speed4 = 5;
   }
 

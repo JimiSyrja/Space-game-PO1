@@ -5,7 +5,7 @@ class Meteor{
   }
 
   draw(){
-    image(img6, this.x, this.y, 30,30);
+    image(img6, this.x, this.y, 50,60);
     this.y += 5;
   }
 
@@ -14,7 +14,7 @@ class Meteor{
   if (this.x >= player3.xpos3 && this.x <= (player3.xpos3 + player3.playerWidth3) &&
       this.y >= player3.ypos3 && this.y <= (player3.ypos3 + player3.playerHeight3)) {
       player3.xpos3 = 300; 
-      player3.ypos3 = 770;
+      player3.ypos3 = 675;
       console.log("hit")
    }
   }
