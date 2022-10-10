@@ -8,6 +8,7 @@ var score = 0;
 var score2 = 0;
 var timer = 5;
 var gameState = 0;
+var meteors = [];
 var start, current;
 let gif;
 
@@ -132,6 +133,12 @@ function game2() {
   ship2.draw();
   ship2.move(); 
 
+  if (lives3 <= 0){
+    gameState = 4;
+  }
+  if (lives4 <= 0){
+    gameState = 4;
+  }
   if (keyCode == 27){
     gameState = 0
   }
@@ -338,10 +345,10 @@ function drawUi2(){
   image(img9, 1140,80,50,50)
 
 
-if(bullets > ship4.position.x){
+// if(bullets >  ship4.position.x){
      
-      lives = lives  - 1;
-    }
+      // lives = lives  - 1;
+    // }
 }
 
 
