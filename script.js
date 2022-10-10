@@ -1,8 +1,9 @@
 var balls = [];
 var ship;
 var ship2;
-var player4;
 var lives = 3;
+var lives3 = 5;
+var lives4 = 5;
 var score = 0;
 var score2 = 0;
 var timer = 5;
@@ -33,7 +34,6 @@ function setup() {
 
     ship = new Player();
     ship2 = new Player2();
-    player4 = new Player4();
   
     newBallsPlease()
 
@@ -100,7 +100,7 @@ function game1(){
   ship.draw();
   ship.moveShip1();
   ship2.draw();
-  ship2.move();
+  ship2.moveShip2();
   ship2.checkCollision();
 
   if (keyCode == 27){
@@ -129,8 +129,8 @@ function game2() {
 
   ship.draw();
   ship.move();
-  player4.draw();
-  player4.move(); 
+  ship2.draw();
+  ship2.move(); 
 
   if (keyCode == 27){
     gameState = 0
@@ -169,6 +169,7 @@ function menu(){
    if (keyCode == 49){ 
     gameState = 1
     timer = 5;
+     setup();
      }
    if(keyCode == 50){
      gameState = 2
@@ -213,33 +214,43 @@ function drawUi(){
 
 function drawUi1(){
     
-  fill(255,255,255);
-  textSize(17);
-  textFont('CASTELLAR');
+  // fill(255,255,255);
+  // textSize(17);
+  // textFont('CASTELLAR');
+  // textAlign(CENTER);
+  // text('Player I : '+ score, width/4,825);
+
+  // fill(255,255,255);
+  // textSize(17);
+  // textFont('CASTELLAR');
+  // textAlign(CENTER);
+  // text('Player II : '+ score2, 900,825);
+
+
+  // fill(255,255,255);
+  // textSize(20);
+  // textFont('CASTELLAR');
+  // textAlign(CENTER);
+  // text('TIME: '+ timer + ' s', width/2,100);
+
+  // if(frameCount % 60 == 0){
+  //   timer -= 1;
+  // }
+
+  // if ( timer <= 0){
+  //   gameState = 4;
+  //   timer = 30;
+  //}
+
+  //Levens
+  fill(255, 0,0);
   textAlign(CENTER);
-  text('Player I : '+ score, width/4,825);
+  textSize(30); 
+  text('X' + lives3, 1120, 60);
+  text('X' + lives4, 1120, 115);
 
-  fill(255,255,255);
-  textSize(17);
-  textFont('CASTELLAR');
-  textAlign(CENTER);
-  text('Player II : '+ score2, 900,825);
-
-
-  fill(255,255,255);
-  textSize(20);
-  textFont('CASTELLAR');
-  textAlign(CENTER);
-  text('TIME: '+ timer + ' s', width/2,100);
-
-  if(frameCount % 60 == 0){
-    timer -= 1;
-  }
-
-  if ( timer <= 0){
-    gameState = 4;
-    timer = 30;
-  }
+  image(img9, 1140,27,50,50)
+  image(img9, 1140,80,50,50)
 }
 
 function drawUi2(){
@@ -374,14 +385,14 @@ function gameOver(){
     balls = [];
     newBallsPlease();
   }
-  if (keyCode == 13){
-    gameState = 1
-    score = 0;
-    score2 = 0;
-    balls = [];
-    newBallsPlease();
+  // if (keyCode == 13){
+  //   gameState = 1
+  //   score = 0;
+  //   score2 = 0;
+  //   balls = [];
+  //   newBallsPlease();
     //Deze werkt niet goed: Bij elk spel gaat die again naar Space Race
-  }
+  //}
   
   fill(255,255,255);
   textSize(17);

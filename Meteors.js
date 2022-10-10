@@ -15,6 +15,7 @@ class Meteor{
       this.y >= ship.ypos && this.y <= (ship.ypos + ship.playerHeight)) {
       ship.xpos = 300; 
       ship.ypos = 675;
+      lives3 = lives3  - 1;
       console.log("hit")
    }
   }

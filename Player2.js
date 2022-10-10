@@ -26,7 +26,7 @@ class Player2 {
     }
   }
 
- move() {
+ moveShip2() {
   if (keyIsDown(UP_ARROW)) {
     this.ypos2 -= this.speed2;
   } else if (keyIsDown(DOWN_ARROW)){
@@ -38,15 +38,22 @@ class Player2 {
   }
  }
 
-  checkCollision() {
+  move() {
+   if (keyIsDown(LEFT_ARROW)) {
+     this.xpos2 -= this.speed2;
+   } else if (keyIsDown(RIGHT_ARROW)) {
+     this.xpos2 += this.speed2;
+   }
+  }
+  checkCollision(){
 
-  if (this.xpos2 >= ship.xpos && this.xpos2 <= (ship.xpos + ship.playerWidth) &&
-      this.ypos2 >= ship.ypos && this.ypos2 <= (ship.ypos + ship.playerHeight)) {
-      ship2.xpos2 = 900; 
-      ship2.ypos2 = 675;
+  if (this.xpos >= ship.xpos && this.xpos <= (ship.xpos + ship.playerWidth) &&
+      this.ypos >= ship.ypos && this.ypos <= (ship.ypos + ship.playerHeight)) {
+      ship2.xpos = 900; 
+      ship2.ypos = 675;
       ship.xpos = 300;
       ship.ypos = 675;
       console.log("hit")
     }
-}
+  }
 }
