@@ -24,7 +24,7 @@ class Meteor{
 
     if (this.x >= ship2.xpos2 && this.x <= (ship2.xpos2 + ship2.playerWidth2) &&
       this.y >= ship2.ypos2 && this.y <= (ship2.ypos2 + ship2.playerHeight2)) {
-      ship2.xpos2 = 300; 
+      ship2.xpos2 = 900; 
       ship2.ypos2 = 675;
       lives4 = lives4  - 1;
       console.log("hit")
@@ -32,5 +32,5 @@ class Meteor{
   }
 }
 
-//var meteors = [];
+
 

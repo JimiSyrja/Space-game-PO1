@@ -9,6 +9,7 @@ var score2 = 0;
 var timer = 15;
 var gameState = 0;
 var meteors = [];
+var meteors2 = [];
 var start, current;
 let gif;
 
@@ -179,15 +180,15 @@ function menu(){
    if (keyCode == 49){ 
     gameState = 1
     timer = 15;
-     //setup();
+    restart();
      }
    if(keyCode == 50){
      gameState = 2
-     lives3 = 5;
-     lives4 = 5;
+     restart();
      }
   if(keyCode == 51){
      gameState = 3
+    restart();
      }
 }
 
@@ -219,7 +220,7 @@ function drawUi(){
   if ( timer <= 0){
     gameState = 4;
     // background(0);
-    // balls = [];
+    balls = [];
     // text = [];
   }
 }
@@ -404,6 +405,7 @@ function preload(){
   img7 = loadImage('img/Background2.jpg');
   img8 = loadImage('img/Background3.jpg');
   img9 = loadImage('img/heart.png');
+  img10 = loadImage('img/meteor.crdownload');
   shipImage = loadImage('assets/asteroids_ship0001.png');
   bulletImage = loadImage('assets/asteroids_bullet.png');
   shipImage2 = loadImage('assets/asteroids_ship0001.png');
@@ -411,4 +413,13 @@ function preload(){
 
   gif = loadImage('assets/Moon.gif');
   gif1 = loadImage('assets/explosion.gif');
+}
+
+
+function restart(){
+  balls = [];
+  meteors = [];
+  setup();
+  lives3 = 5
+  lives4 = 5;
 }

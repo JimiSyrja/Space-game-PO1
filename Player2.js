@@ -49,8 +49,8 @@ class Player2 {
 
   if (this.xpos >= ship.xpos && this.xpos <= (ship.xpos + ship.playerWidth) &&
       this.ypos >= ship.ypos && this.ypos <= (ship.ypos + ship.playerHeight)) {
-      ship2.xpos = 900; 
-      ship2.ypos = 675;
+      ship2.xpos2 = 900; 
+      ship2.ypos2 = 675;
       ship.xpos = 300;
       ship.ypos = 675;
       console.log("hit")
