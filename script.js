@@ -6,7 +6,7 @@ var lives3 = 5;
 var lives4 = 5;
 var score = 0;
 var score2 = 0;
-var timer = 5;
+var timer = 15;
 var gameState = 0;
 var meteors = [];
 var start, current;
@@ -89,7 +89,7 @@ function draw() {
 
 function game1(){
   
-  background(bg);
+  background(img5);
   drawUi();
     
   balls.forEach(b => {
@@ -175,8 +175,8 @@ function menu(){
 
    if (keyCode == 49){ 
     gameState = 1
-    timer = 5;
-     setup();
+    timer = 15;
+     //setup();
      }
    if(keyCode == 50){
      gameState = 2
@@ -401,6 +401,7 @@ function preload(){
   img2 = loadImage('img/Meteor.png');
   img3 = loadImage('img/SpaceShip2.webp');
   img4 = loadImage('img/GameoverSMB.webp');
+  img5 = loadImage('img/moonbg.jpg');
   img6 = loadImage('img/BlueBird.png');
   img7 = loadImage('img/Background2.jpg');
   img8 = loadImage('img/Background3.jpg');
