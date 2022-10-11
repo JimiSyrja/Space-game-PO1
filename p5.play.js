@@ -1,9 +1,3 @@
-/*
-p5.play
-by Paolo Pedercini/molleindustria, 2015
-http://molleindustria.org/
-*/
-
 (function(root, factory) {
 if (typeof define === 'function' && define.amd)
 define('p5.play', ['p5'], function(p5) { (factory(p5)); });
@@ -12,59 +6,14 @@ factory(require('../p5'));
 else
 factory(root.p5);
 }(this, function(p5) {
-/**
- * p5.play is a library for p5.js to facilitate the creation of games and gamelike
- * projects.
- *
- * It provides a flexible Sprite class to manage visual objects in 2D space
- * and features such as animation support, basic collision detection
- * and resolution, mouse and keyboard interactions, and a virtual camera.
- *
- * p5.play is not a box2D-derived physics engine, it doesn't use events, and it's
- * designed to be understood and possibly modified by intermediate programmers.
- *
- * See the examples folder for more info on how to use this library.
- *
- * @module p5.play
- * @submodule p5.play
- * @for p5.play
- * @main
- */
 
-// =============================================================================
-//                         initialization
-// =============================================================================
-
-// This is the new way to initialize custom p5 properties for any p5 instance.
-// The goal is to migrate lazy P5 properties over to this method.
-// @see https://github.com/molleindustria/p5.play/issues/46
 p5.prototype.registerMethod('init', function p5PlayInit() {
-  /**
-   * The sketch camera automatically created at the beginning of a sketch.
-   * A camera facilitates scrolling and zooming for scenes extending beyond
-   * the canvas. A camera has a position, a zoom factor, and the mouse
-   * coordinates relative to the view.
-   *
-   * In p5.js terms the camera wraps the whole drawing cycle in a
-   * transformation matrix but it can be disabled anytime during the draw
-   * cycle, for example to draw interface elements in an absolute position.
-   *
-   * @property camera
-   * @type {camera}
-   */
   this.camera = new Camera(this, 0, 0, 1);
   this.camera.init = false;
 });
 
 // This provides a way for us to lazily define properties that
 // are global to p5 instances.
-//
-// Note that this isn't just an optimization: p5 currently provides no
-// way for add-ons to be notified when new p5 instances are created, so
-// lazily creating these properties is the *only* mechanism available
-// to us. For more information, see:
-//
-// https://github.com/processing/p5.js/issues/1263
 function defineLazyP5Property(name, getter) {
   Object.defineProperty(p5.prototype, name, {
     configurable: true,
@@ -196,15 +145,7 @@ p5.prototype.removeSprite = function(sprite) {
   sprite.remove();
 };
 
-/**
-* Updates all the sprites in the sketch (position, animation...)
-* it's called automatically at every draw().
-* It can be paused by passing a parameter true or false;
-* Note: it does not render the sprites.
-*
-* @method updateSprites
-* @param {Boolean} updating false to pause the update, true to resume
-*/
+
 p5.prototype.updateSprites = function(upd) {
 
   if(upd === false)
@@ -491,100 +432,11 @@ p5.prototype._isMouseButtonInState = function(buttonCode, state) {
  * @private
  * @property KEY
  * @type {Object}
- */
+//  */
 p5.prototype.KEY = {
-    'BACKSPACE': 8,
-    'TAB': 9,
     'ENTER': 13,
-    'SHIFT': 16,
-    'CTRL': 17,
-    'ALT': 18,
-    'PAUSE': 19,
-    'CAPS_LOCK': 20,
     'ESC': 27,
     'SPACE': 32,
-    ' ': 32,
-    'PAGE_UP': 33,
-    'PAGE_DOWN': 34,
-    'END': 35,
-    'HOME': 36,
-    'LEFT_ARROW': 37,
-    'LEFT': 37,
-    'UP_ARROW': 38,
-    'UP': 38,
-    'RIGHT_ARROW': 39,
-    'RIGHT': 39,
-    'DOWN_ARROW': 40,
-    'DOWN': 40,
-    'INSERT': 45,
-    'DELETE': 46,
-    '0': 48,
-    '1': 49,
-    '2': 50,
-    '3': 51,
-    '4': 52,
-    '5': 53,
-    '6': 54,
-    '7': 55,
-    '8': 56,
-    '9': 57,
-    'A': 65,
-    'B': 66,
-    'C': 67,
-    'D': 68,
-    'E': 69,
-    'F': 70,
-    'G': 71,
-    'H': 72,
-    'I': 73,
-    'J': 74,
-    'K': 75,
-    'L': 76,
-    'M': 77,
-    'N': 78,
-    'O': 79,
-    'P': 80,
-    'Q': 81,
-    'R': 82,
-    'S': 83,
-    'T': 84,
-    'U': 85,
-    'V': 86,
-    'W': 87,
-    'X': 88,
-    'Y': 89,
-    'Z': 90,
-    '0NUMPAD': 96,
-    '1NUMPAD': 97,
-    '2NUMPAD': 98,
-    '3NUMPAD': 99,
-    '4NUMPAD': 100,
-    '5NUMPAD': 101,
-    '6NUMPAD': 102,
-    '7NUMPAD': 103,
-    '8NUMPAD': 104,
-    '9NUMPAD': 105,
-    'MULTIPLY': 106,
-    'PLUS': 107,
-    'MINUS': 109,
-    'DOT': 110,
-    'SLASH1': 111,
-    'F1': 112,
-    'F2': 113,
-    'F3': 114,
-    'F4': 115,
-    'F5': 116,
-    'F6': 117,
-    'F7': 118,
-    'F8': 119,
-    'F9': 120,
-    'F10': 121,
-    'F11': 122,
-    'F12': 123,
-    'EQUAL': 187,
-    'COMMA': 188,
-    'SLASH': 191,
-    'BACKSLASH': 220
 };
 
 /**
@@ -4096,7 +3948,6 @@ Quadtree.prototype.getIndex = function( pRect ) {
         index = 2;
       }
 
-      //pRect can completely fit within the right quadrants
     } else if( pRect.collider.left() > verticalMidpoint ) {
       if( topQuadrant ) {
         index = 0;
@@ -4110,20 +3961,14 @@ Quadtree.prototype.getIndex = function( pRect ) {
 };
 
 
-/*
-	 * Insert an object into the node. If the node
-	 * exceeds the capacity, it will split and add all
-	 * objects to their corresponding subnodes.
-	 */
+
 Quadtree.prototype.insert = function( obj ) {
-  //avoid double insertion
   if(this.objects.indexOf(obj) === -1)
   {
 
     var i = 0,
         index;
 
-    //if we have subnodes ...
     if( typeof this.nodes[0] !== 'undefined' ) {
       index = this.getIndex( obj );
 
@@ -4137,12 +3982,10 @@ Quadtree.prototype.insert = function( obj ) {
 
     if( this.objects.length > this.max_objects && this.level < this.max_levels ) {
 
-      //split if we don't already have subnodes
       if( typeof this.nodes[0] === 'undefined' ) {
         this.split();
       }
 
-      //add all objects to there corresponding subnodes
       while( i < this.objects.length ) {
 
         index = this.getIndex( this.objects[i] );
@@ -4158,23 +4001,20 @@ Quadtree.prototype.insert = function( obj ) {
 };
 
 
-/*
-	 * Return all objects that could collide with a given area
-	 */
 Quadtree.prototype.retrieve = function( pRect ) {
 
 
   var index = this.getIndex( pRect ),
       returnObjects = this.objects;
 
-  //if we have subnodes ...
+
   if( typeof this.nodes[0] !== 'undefined' ) {
 
-    //if pRect fits into a subnode ..
+   
     if( index !== -1 ) {
       returnObjects = returnObjects.concat( this.nodes[index].retrieve( pRect ) );
 
-      //if pRect does not fit into a subnode, check it against all subnodes
+  
     } else {
       for( var i=0; i < this.nodes.length; i=i+1 ) {
         returnObjects = returnObjects.concat( this.nodes[i].retrieve( pRect ) );
@@ -4197,9 +4037,7 @@ Quadtree.prototype.retrieveFromGroup = function( pRect, group ) {
   return results;
 };
 
-/*
-	 * Get all objects stored in the quadtree
-	 */
+
 Quadtree.prototype.getAll = function() {
 
   var objects = this.objects;
@@ -4212,14 +4050,11 @@ Quadtree.prototype.getAll = function() {
 };
 
 
-/*
-	 * Get the node in which a certain object is stored
-	 */
+
 Quadtree.prototype.getObjectNode = function( obj ) {
 
   var index;
 
-  //if there are no subnodes, object must be here
   if( !this.nodes.length ) {
 
     return this;
@@ -4228,12 +4063,10 @@ Quadtree.prototype.getObjectNode = function( obj ) {
 
     index = this.getIndex( obj );
 
-    //if the object does not fit into a subnode, it must be here
     if( index === -1 ) {
 
       return this;
 
-      //if it fits into a subnode, continue deeper search there
     } else {
       var node = this.nodes[index].getObjectNode( obj );
       if( node ) return node;
@@ -4244,10 +4077,7 @@ Quadtree.prototype.getObjectNode = function( obj ) {
 };
 
 
-/*
-	 * Removes a specific object from the quadtree
-	 * Does not delete empty subnodes. See cleanup-function
-	 */
+
 Quadtree.prototype.removeObject = function( obj ) {
 
   var node = this.getObjectNode( obj ),
@@ -4259,9 +4089,7 @@ Quadtree.prototype.removeObject = function( obj ) {
 };
 
 
-/*
-	 * Clear the quadtree and delete all objects
-	 */
+
 Quadtree.prototype.clear = function() {
 
   this.objects = [];
@@ -4277,10 +4105,7 @@ Quadtree.prototype.clear = function() {
 };
 
 
-/*
-	 * Clean up the quadtree
-	 * Like clear, but objects won't be deleted but re-inserted
-	 */
+
 Quadtree.prototype.cleanup = function() {
 
   var objects = this.getAll();
@@ -4302,30 +4127,15 @@ function updateTree() {
   }
 }
 
-//keyboard input
 p5.prototype.registerMethod('pre', p5.prototype.readPresses);
 
-//automatic sprite update
 p5.prototype.registerMethod('pre', p5.prototype.updateSprites);
 
-//quadtree update
 p5.prototype.registerMethod('post', updateTree);
 
-//camera push and pop
 p5.prototype.registerMethod('pre', cameraPush);
 p5.prototype.registerMethod('post', cameraPop);
 
-//deltaTime
-//p5.prototype.registerMethod('pre', updateDelta);
-
-/**
- * Log a warning message to the host console, using native `console.warn`
- * if it is available but falling back on `console.log` if not.  If no
- * console is available, this method will fail silently.
- * @method _warn
- * @param {!string} message
- * @private
- */
 p5.prototype._warn = function(message) {
   var console = window.console;
 

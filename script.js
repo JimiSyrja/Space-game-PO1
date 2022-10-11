@@ -121,6 +121,9 @@ function game2() {
   if(frameCount % 5 == 0){
     // spawn!
     meteors.push(new Meteor());
+    if (this.y > 725){
+      
+    }
   }
 
   meteors.forEach((m) => {
@@ -149,12 +152,12 @@ function game3(){
     background(img8);
     drawUi2();
 
+
+  
   if (keyCode == 27){
     gameState = 0
   }
 }
-
-
 
 function menu(){
     background (gif)
@@ -318,13 +321,8 @@ function drawUi2(){
   image(img9, 1140,80,50,50)
 
 
-// if(bullets >  ship4.position.x){
-     
-      // lives = lives  - 1;
-    // }
+
 }
-
-
 
 function gameOver(){
   background(img4)
