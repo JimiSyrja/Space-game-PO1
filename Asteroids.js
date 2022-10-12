@@ -23,7 +23,7 @@ class Ball {
   checkCollision() {
 
   if (this.x >= ship.xpos && this.x <= (ship.xpos + ship.playerWidth) &&
-      this.y >= ship.ypos && this.y <= (ship.ypos + ship.playerHeight)) {
+      this.y >= ship.ypos && this.y <= (ship.ypos + 10  + ship.playerHeight) && this.y >= ship.ypos && this.y <= (ship.ypos -10 + ship.playerHeight)) {
       //image(gif1, ship.xpos, ship.ypos)
       //gif.play();
       //wait(1000);

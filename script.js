@@ -6,8 +6,8 @@ var lives3 = 5;
 var lives4 = 5;
 var score = 0;
 var score2 = 0;
-var timer = 15;
-var gameState = 3;
+var timer = 75;
+var gameState = 0;
 var meteors = [];
 var meteors2 = [];
 let gif;
@@ -75,6 +75,7 @@ function SpaceRace(){
     score = 0;
     score2 = 0;
     balls = [];
+    music.stop();
     newBallsPlease();
   }   
 
@@ -117,6 +118,8 @@ function SpaceEvade() {
   }
   if (keyCode == 27){
     gameState = 0
+    music.stop();
+    restart();
   }
 }
 
@@ -140,7 +143,7 @@ function menu(){
   // 1  
    if (keyCode == 49){ 
     gameState = 1
-    timer = 15;
+    timer = 75;
     music.play();
     // restart();
      }
@@ -234,6 +237,7 @@ function gameOver(){
     score = 0;
     score2 = 0;
     balls = [];
+    music.stop();
     newBallsPlease();
   }
   // if (keyCode == 13){
