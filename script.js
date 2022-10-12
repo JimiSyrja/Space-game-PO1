@@ -19,6 +19,7 @@ var bulletImage;
 var bulletImage2;
 var ship3;
 var ship4;
+var ship5;
 var bullets;
 var bullets2;
 
@@ -36,6 +37,7 @@ function setup() {
 
     ship = new Player();
     ship2 = new Player2();
+    ship5 = new Player3();
   
     newBallsPlease()
 
@@ -45,15 +47,15 @@ function setup() {
 function newBallsPlease(){
   //laat de asteroids random aantallen spawnen
     for(var i = 0; i < 100; i++){
-    let randomY = Math.floor(Math.random() * 615);
-    let randomX = Math.floor(Math.random() * 1200);       //let randomR = Math.floor(Math.random() * 30) + 15;
-    let randomVx = Math.floor(Math.random() * 3) + 1;
-    if(Math.random() > 0.5){
-      randomVx *= -1;
-    }  
-    
-    //let randomVy = Math.floor(Math.random() * 5) + 1;
-    balls.push(new             Ball(randomX,randomY,20,20,randomVx,0,"red"));
+      let randomY = Math.floor(Math.random() * 615);
+      let randomX = Math.floor(Math.random() * 1200);       //let randomR = Math.floor(Math.random() * 30) + 15;
+      let randomVx = Math.floor(Math.random() * 3) + 1;
+      if(Math.random() > 0.5){
+        randomVx *= -1;
+      }  
+      
+      //let randomVy = Math.floor(Math.random() * 5) + 1;
+      balls.push(new Ball(randomX,randomY,20,20,randomVx,0,"red"));
     }
 
         ship3 = createSprite(900, height / 2);
@@ -73,22 +75,21 @@ function newBallsPlease(){
     bullets2 = new Group();
 }
 
-
 function draw() {
       if(gameState == 0){
     menu();
   } else if(gameState == 1){
-    game1(); 
+    SpaceRace(); 
   } else if(gameState == 2){
-    game2();
+    SpaceEvade();
   } else if(gameState == 3){
-    game3();
+    SpaceFire();
   }else if(gameState == 4){
     gameOver();
   }
 }
 
-function game1(){
+function SpaceRace(){
   
   background(img5);
   drawUi();
@@ -114,7 +115,7 @@ function game1(){
   }   
 }
 
-function game2() {
+function SpaceEvade() {
   //Space Evade
     background(img7);
     drawUi1();
@@ -148,12 +149,11 @@ function game2() {
   }
 }
 
-//Space Maze
-function game3(){
+
+function SpaceFire(){
     background(img8);
     drawUi2();
-
-
+    ship5.draw();
   
   if (keyCode == 27){
     gameState = 0
@@ -238,70 +238,70 @@ function drawUi1(){
 }
 
 function drawUi2(){
-  for (var i = 0; i < allSprites.length; i++) {
-    var sprite = allSprites[i];
-    if (sprite.position.x < -MARGIN) {
-      sprite.position.x = width+MARGIN;
-    }
-    if (sprite.position.x > width + MARGIN) {
-      sprite.position.x = -MARGIN;
-    }
-    if (sprite.position.y < -MARGIN) {
-      sprite.position.y = height + MARGIN;
-    }
-    if (sprite.position.y > height + MARGIN) {
-      sprite.position.y = -MARGIN;
-    }
-  }
+  // for (var i = 0; i < allSprites.length; i++) {
+  //   var sprite = allSprites[i];
+  //   if (sprite.position.x < -MARGIN) {
+  //     sprite.position.x = width+MARGIN;
+  //   }
+  //   if (sprite.position.x > width + MARGIN) {
+  //     sprite.position.x = -MARGIN;
+  //   }
+  //   if (sprite.position.y < -MARGIN) {
+  //     sprite.position.y = height + MARGIN;
+  //   }
+  //   if (sprite.position.y > height + MARGIN) {
+  //     sprite.position.y = -MARGIN;
+  //   }
+  // }
 
   
-  if (keyDown(LEFT_ARROW)) {
-    ship3.rotation -= 4;
-  }
-  if (keyDown(RIGHT_ARROW)) {
-    ship3.rotation += 4;
-  }
+  // if (keyDown(LEFT_ARROW)) {
+  //   ship3.rotation -= 4;
+  // }
+  // if (keyDown(RIGHT_ARROW)) {
+  //   ship3.rotation += 4;
+  // }
 
-  if (keyDown(UP_ARROW)) {
-    ship3.addSpeed(0.2, ship3.rotation);
-    ship3.changeAnimation(SHIP_THRUST);
-  } else {
-    ship3.changeAnimation(SHIP_NORMAL);
-  }
+  // if (keyDown(UP_ARROW)) {
+  //   ship3.addSpeed(0.2, ship3.rotation);
+  //   ship3.changeAnimation(SHIP_THRUST);
+  // } else {
+  //   ship3.changeAnimation(SHIP_NORMAL);
+  // }
 
-  if (keyWentDown('Enter')) {
-    var bullet = createSprite(ship3.position.x, ship3.position.y);
-    bullet.addImage(bulletImage);
-    bullet.setSpeed(10 + ship3.getSpeed(), ship3.rotation);
-    bullet.life = 130;
-    bullets.add(bullet);
+  // if (keyWentDown('Enter')) {
+  //   var bullet = createSprite(ship3.position.x, ship3.position.y);
+  //   bullet.addImage(bulletImage);
+  //   bullet.setSpeed(10 + ship3.getSpeed(), ship3.rotation);
+  //   bullet.life = 130;
+  //   bullets.add(bullet);
 
-  }
+  // }
 
 
     
-    if (keyDown(65)) {
-    ship4.rotation -= 4;
-  }
-  if (keyDown(68)) {
-    ship4.rotation += 4;
-  }
+  //   if (keyDown(65)) {
+  //   ship4.rotation -= 4;
+  // }
+  // if (keyDown(68)) {
+  //   ship4.rotation += 4;
+  // }
 
-  if (keyDown(87)) {
-    ship4.addSpeed(0.2, ship4.rotation);
-    ship4.changeAnimation(SHIP_THRUST2);
-  } else {
-    ship4.changeAnimation(SHIP_NORMAL2);
-  }
+  // if (keyDown(87)) {
+  //   ship4.addSpeed(0.2, ship4.rotation);
+  //   ship4.changeAnimation(SHIP_THRUST2);
+  // } else {
+  //   ship4.changeAnimation(SHIP_NORMAL2);
+  // }
 
-  if (keyWentDown('Space')) {
-    var bullet2 = createSprite(ship4.position.x, ship4.position.y);
-    bullet2.addImage(bulletImage2);
-    bullet2.setSpeed(10 + ship4.getSpeed(), ship4.rotation);
-    bullet2.life = 130;
-    bullets2.add(bullet2);
+  // if (keyWentDown('Space')) {
+  //   var bullet2 = createSprite(ship4.position.x, ship4.position.y);
+  //   bullet2.addImage(bulletImage2);
+  //   bullet2.setSpeed(10 + ship4.getSpeed(), ship4.rotation);
+  //   bullet2.life = 130;
+  //   bullets2.add(bullet2);
 
-  }
+  // }
 
   drawSprites();
   
