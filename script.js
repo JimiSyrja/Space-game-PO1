@@ -13,6 +13,7 @@ var meteors2 = [];
 let gif;
 var music;
 
+var myfont1;
 
 function setup() {
     createCanvas(1200, 725);
@@ -105,9 +106,9 @@ function SpaceEvade() {
     m.checkCollision();
   });
 
-  ship.draw();
+  ship.drawGame2();
   ship.move();
-  ship2.draw();
+  ship2.drawGame2();
   ship2.move(); 
 
   if (lives3 <= 0){
@@ -126,13 +127,11 @@ function SpaceEvade() {
 
 function menu(){
     background (gif)
-  
     fill(4, 44, 220 );
     textSize(60);
-    textFont('Audiowide,bolder');
     textAlign(CENTER);
-    text('Space Games', width/4,250);
-
+   // text('Space Games', width/4,250);
+    textFont(myfont1);
     fill(255,255,255);
     textSize(25);
     textFont('CASTELLAR');
@@ -145,12 +144,12 @@ function menu(){
     gameState = 1
     timer = 75;
     music.play();
-    // restart();
+    restart();
      }
    if(keyCode == 50){
      gameState = 2
       music.play();
-     // restart();
+     restart();
      }
 }
 
@@ -278,10 +277,15 @@ function preload(){
   img4 = loadImage('img/GameoverSMB.webp');
   img5 = loadImage('img/moonbg.jpg');
   img6 = loadImage('img/heart.png');
+  img7 = loadImage('img/Player1.png');
+  img8 = loadImage('img/Player2.png');
   img10 = loadImage('img/meteor.crdownload');
   img11 = loadImage('img/meteorite.png');
   
   music = loadSound('HyperspaceThemeMusic.mp3');
+
+ myfont1 = loadFont('fonts/SpaceGames.ttf');
+
   
   gif = loadImage('assets/Moon.gif');
   gif1 = loadImage('assets/explosion.gif');

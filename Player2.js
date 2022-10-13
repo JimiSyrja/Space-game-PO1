@@ -3,7 +3,7 @@ class Player2 {
     this.playerHeight2 = 30;
     this.playerWidth2 = 25;
     this.xpos2 = 900;
-    this.ypos2 = 675;
+    this.ypos2 = 625;
     this.speed2 = 5;
   }
 
@@ -18,6 +18,16 @@ class Player2 {
     if(ship2.ypos2 > 700){
      ship2.ypos2 = 700
     }
+    if(ship2.xpos2 < 0){
+     ship2.xpos2 = 0
+    }
+    if(ship2.xpos2 > 1185){
+     ship2.xpos2 = 1185
+    }
+  }
+
+  drawGame2(){
+    image(img8, this.xpos2, this.ypos2, 75,75);
     if(ship2.xpos2 < 0){
      ship2.xpos2 = 0
     }
