@@ -7,10 +7,11 @@ var lives4 = 5;
 var score = 0;
 var score2 = 0;
 var timer = 75;
-var gameState = 0;
+var gameState = 3;
 var meteors = [];
 var meteors2 = [];
 let gif;
+let fontPixel;
 var music;
 
 var myfont1;
@@ -218,7 +219,7 @@ function gameOver(){
   else if(score == score2){
     fill(213, 28, 28)
     textSize(30);
-    textFont("PIXELFONT")
+    textFont("Prismatic")
     text("draw!!!", width/2,550)
   }
   
@@ -284,7 +285,7 @@ function preload(){
   
   music = loadSound('HyperspaceThemeMusic.mp3');
 
- myfont1 = loadFont('fonts/SpaceGames.ttf');
+  //fontPixel = loadFont('assets/fipps.zip');
 
   
   gif = loadImage('assets/Moon.gif');

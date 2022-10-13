@@ -7,9 +7,9 @@ class Meteor{
   draw(){
     image(img11, this.x3, this.y3, 50,60);
     this.y3 += 5;
-    if (this.y3 >= 725){
-     ();
-    }
+    // if (this.y3 >= 725){
+    
+    // }
   }
 
   checkCollision() {
@@ -31,6 +31,3 @@ class Meteor{
     }
   }
 }
-
-
-
