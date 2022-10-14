@@ -1,6 +1,7 @@
 var balls = [];
 var ship;
 var ship2;
+var meteor;
 var lives = 3;
 var lives3 = 5;
 var lives4 = 5;
@@ -21,6 +22,7 @@ function setup() {
 
     ship = new Player();
     ship2 = new Player2();
+    meteor = new Ball2();
   
     newBallsPlease()
 

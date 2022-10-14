@@ -65,12 +65,5 @@ class Player2 {
   //     ship.ypos = 675;
   //     console.log("hit")
   //   }
-  //   if (this.x3 >= ship2.xpos2 && this.x3 <= (ship2.xpos2 + ship2.playerWidth2)    &&
-  //   this.y3 >= ship2.ypos2 && this.y3 <= (ship2.ypos2 + ship2.playerHeight2)) {
-  //     // ship2.xpos2 = 900; 
-  //     // ship2.ypos2 = 675;
-  //     lives4 = lives4  - 1;
-  //     console.log("hit")
-  //   }
-  // }
+  //  
 }
