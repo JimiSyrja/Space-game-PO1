@@ -15,6 +15,19 @@ let gif;
 var music;
 
 
+var ship3;
+var ship4;
+var bullets;
+var bullets2;
+
+
+var MARGIN = 40;
+var SHIP_NORMAL = 'normal';
+var SHIP_THRUST = 'thrust';
+
+var SHIP_NORMAL2 = 'normal';
+var SHIP_THRUST2 = 'thrust';
+
 function setup() {
     createCanvas(1200, 725);
 
@@ -25,6 +38,23 @@ function setup() {
     newBallsPlease()
 
     textAlign(CENTER);
+
+  ship3 = createSprite(300, height / 2);
+  ship3.maxSpeed = 6;
+  ship3.friction = 0.01;
+  ship3.addImage(SHIP_NORMAL, img12);
+  ship3.addAnimation(SHIP_THRUST, 'assets/asteroids_ship0002.png', 'assets/asteroids_ship0007.png');
+
+  ship4 = createSprite(width / 2, height / 2);
+  ship4.maxSpeed = 6;
+  ship4.friction = 0.01;
+  ship4.addImage(SHIP_NORMAL2, img14);
+  ship4.addAnimation(SHIP_THRUST2, 'assets/asteroids_ship0003.png', 'assets/asteroids_ship0006.png');
+
+
+  bullets = new Group();
+  bullets2 = new Group();
+  
 }
 
 function newBallsPlease(){
@@ -50,11 +80,14 @@ function draw() {
     SpaceRace(); 
   } else if(gameState == 2){
     SpaceEvade();
-  }else if(gameState == 3){
+  } else if(gameState == 3){
+    SatisfyingSpaceArt();
+  }else if(gameState == 4){
     gameOver();
-  } else if(gameState == 4){
+  } else if(gameState == 5){
     gameOver2();
   }
+
 }
 
 function SpaceRace(){
@@ -125,20 +158,25 @@ function SpaceEvade() {
   }
 }
 
+function SatisfyingSpaceArt() {
+  background(0);
+  drawUi2();
+}
 
 function menu(){
     background (gif)
     fill(4, 44, 220 );
     textSize(70);
     textFont (myFont);
-    text('Space Games', 100,250);
+    text('Space Games', 400,250);
   
     fill(255,255,255);
     textSize(35);
     textAlign(LEFT);
     textFont(myFont1);
-    text('Press 1 for Space Race', 150,350);
-    text('Press 2 for Space Evade', 150,400);
+    text('Press 1 for Space Race', 100,350);
+    text('Press 2 for Space Evade', 100,400);
+    text('Press 3 for SatisfyingSpaceArt', 100,450);
     textSize(30);
     text('Made by Jimi and Zujan', 810,720);
     image(gif2,50,575);
@@ -153,6 +191,11 @@ function menu(){
      }
    if(keyCode == 50){
      gameState = 2
+      music.play();
+     restart();
+     }
+     if(keyCode == 51){
+     gameState = 3
       music.play();
      restart();
      }
@@ -193,6 +236,7 @@ function drawUi(){
   // }
 }
 
+
 function drawUi1(){
   //Levens
   fill(255, 0,0);
@@ -203,6 +247,83 @@ function drawUi1(){
 
   image(img6, 1140,27,50,50)
   image(img6, 1140,80,50,50)
+}
+
+function drawUi2(){
+  //Levens
+  fill(255,255,255);
+  textAlign(CENTER);
+  textSize(20); 
+  text('CONTROLS: WASD + Spacebar' , 1000, 60);
+  text('CONTROLS: ArrowKeys + Enter', 1000, 90);
+
+
+  for (var i = 0; i < allSprites.length; i++) {
+    var sprite = allSprites[i];
+    if (sprite.position.x < -MARGIN) {
+      sprite.position.x = width+MARGIN;
+    }
+    if (sprite.position.x > width + MARGIN) {
+      sprite.position.x = -MARGIN;
+    }
+    if (sprite.position.y < -MARGIN) {
+      sprite.position.y = height + MARGIN;
+    }
+    if (sprite.position.y > height + MARGIN) {
+      sprite.position.y = -MARGIN;
+    }
+  }
+
+  
+  if (keyDown(LEFT_ARROW)) {
+    ship3.rotation -= 4;
+  }
+  if (keyDown(RIGHT_ARROW)) {
+    ship3.rotation += 4;
+  }
+
+  if (keyDown(UP_ARROW)) {
+    ship3.addSpeed(0.2, ship3.rotation);
+    ship3.changeAnimation(SHIP_THRUST);
+  } else {
+    ship3.changeAnimation(SHIP_NORMAL);
+  }
+
+  if (keyDown('Enter')) {
+    var bullet = createSprite(ship3.position.x, ship3.position.y);
+    bullet.addImage(img13);
+    bullet.setSpeed(10 + ship3.getSpeed(), ship3.rotation);
+    bullet.life = 100;
+    bullets.add(bullet);
+  }
+
+
+    
+    if (keyDown(65)) {
+    ship4.rotation -= 4;
+  }
+  if (keyDown(68)) {
+    ship4.rotation += 4;
+  }
+
+  if (keyDown(87)) {
+    ship4.addSpeed(0.2, ship4.rotation);
+    ship4.changeAnimation(SHIP_THRUST2);
+  } else {
+    ship4.changeAnimation(SHIP_NORMAL2);
+  }
+
+  if (keyDown('Space')) {
+    var bullet2 = createSprite(ship4.position.x, ship4.position.y);
+    bullet2.addImage(img15);
+    bullet2.setSpeed(10 + ship4.getSpeed(), ship4.rotation);
+    bullet2.life = 100;
+    bullets2.add(bullet2);
+  }
+
+  drawSprites();
+
+  
 }
 
 function gameOver(){
@@ -311,6 +432,11 @@ function preload(){
   gif = loadImage('assets/Moon.gif');
   gif1 = loadImage('assets/explosion.gif');
   gif2 = loadImage('assets/astronaut.gif');
+
+  img12 = loadImage('assets/asteroids_ship0001.png');
+  img13 = loadImage('assets/asteroids_bullet.png');
+  img14 = loadImage('assets/asteroids_ship0001.png');
+  img15 = loadImage('assets/asteroids_bullet.png');
 
 }
 
