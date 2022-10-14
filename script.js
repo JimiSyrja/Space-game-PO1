@@ -52,6 +52,8 @@ function draw() {
     SpaceEvade();
   }else if(gameState == 3){
     gameOver();
+  } else if(gameState == 4){
+    gameOver2();
   }
 }
 
@@ -101,20 +103,20 @@ function SpaceEvade() {
   }
 
   meteors.forEach((m) => {
-    m.draw();
-    m.checkCollision();
+    m.draw(); 
   });
 
+  ship.checkCollision2();
   ship.drawGame2();
   ship.move();
   ship2.drawGame2();
   ship2.move(); 
 
   if (lives3 <= 0){
-    gameState = 3;
+    gameState = 4;
   }
   if (lives4 <= 0){
-    gameState = 3;
+    gameState = 4;
   }
   if (keyCode == 27){
     gameState = 0
@@ -248,17 +250,31 @@ function gameOver(){
   //   newBallsPlease();
     //Deze werkt niet goed: Bij elk spel gaat die again naar Space Race
   //}
+
+}
+
+function gameOver2(){
+  background(img4)
   
-  // fill(255,255,255);
-  // textSize(17);
-  // textFont('CASTELLAR');
-  // text('Player I : '+ score, 450,610);
+  fill(255,255,255 );
+  textSize(15);
+  textAlign(LEFT);
+  textFont('Audiowide,bolder');
+  text('Press Esc for menu', 100,50);
+  text('Press enter for again', 100, 100)
 
-  // fill(255,255,255);
-  // textSize(17);
-  // textFont('CASTELLAR');
-  // text('Player II : '+ score2, 750,610);
-
+  // esc
+  if (keyCode == 27){
+    gameState = 0;
+    restart();
+    music.stop();
+    newBallsPlease();
+  }
+  if (keyCode == 13){
+    gameState = 2
+    music.play();
+    restart();
+  }
 }
 
 function wait(time){
@@ -285,7 +301,7 @@ function preload(){
   
   music = loadSound('HyperspaceThemeMusic.mp3');
 
-  // myfont1 = loadFont('assets/fipps.zip');
+ //  myfont1 = loadFont('assets/fipps.zip');
 
   
   gif = loadImage('assets/Moon.gif');
@@ -299,4 +315,6 @@ function restart(){
   setup();
   lives3 = 5
   lives4 = 5;
+  score = 0;
+  score2 = 0;
 }

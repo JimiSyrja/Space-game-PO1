@@ -55,15 +55,22 @@ class Player2 {
      this.xpos2 += this.speed2;
    }
   }
-  checkCollision(){
+  // checkCollision(){
 
-  if (this.xpos >= ship.xpos && this.xpos <= (ship.xpos + ship.playerWidth) &&
-      this.ypos >= ship.ypos && this.ypos <= (ship.ypos + ship.playerHeight)) {
-      ship2.xpos2 = 900; 
-      ship2.ypos2 = 675;
-      ship.xpos = 300;
-      ship.ypos = 675;
-      console.log("hit")
-    }
-  }
+  // if (this.xpos >= ship.xpos && this.xpos <= (ship.xpos + ship.playerWidth) &&
+  //     this.ypos >= ship.ypos && this.ypos <= (ship.ypos + ship.playerHeight)) {
+  //     ship2.xpos2 = 900; 
+  //     ship2.ypos2 = 675;
+  //     ship.xpos = 300;
+  //     ship.ypos = 675;
+  //     console.log("hit")
+  //   }
+  //   if (this.x3 >= ship2.xpos2 && this.x3 <= (ship2.xpos2 + ship2.playerWidth2)    &&
+  //   this.y3 >= ship2.ypos2 && this.y3 <= (ship2.ypos2 + ship2.playerHeight2)) {
+  //     // ship2.xpos2 = 900; 
+  //     // ship2.ypos2 = 675;
+  //     lives4 = lives4  - 1;
+  //     console.log("hit")
+  //   }
+  // }
 }

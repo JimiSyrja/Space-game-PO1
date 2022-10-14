@@ -55,6 +55,19 @@ class Player {
         this.xpos += this.speed;
       }
   }
+
+
+  checkCollision2() {
+
+  if (ship.xpos >= this.x3 && ship.xpos <= (this.x3 + this.meteorWidth) &&
+      ship.ypos >= this.y3 && ship.ypos <= (this.y3 + this.meteorHeight)) {
+      //image(gif1, ship.xpos, ship.ypos)
+      //gif.play();
+      //wait(1000);
+      lives3 = lives3 -1;
+      console.log("hit")
+    }
+  }
 }
 
   
