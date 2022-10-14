@@ -12,17 +12,15 @@ var gameState = 0;
 var meteors = [];
 var meteors2 = [];
 let gif;
-let fontPixel;
 var music;
 
-var myfont1;
 
 function setup() {
     createCanvas(1200, 725);
 
     ship = new Player();
     ship2 = new Player2();
-    meteor = new Ball2();
+    // meteor = new Ball2();
   
     newBallsPlease()
 
@@ -131,17 +129,19 @@ function SpaceEvade() {
 function menu(){
     background (gif)
     fill(4, 44, 220 );
-    textSize(60);
-    textFont('myfont1');
-    textAlign(CENTER);
-    text('Space Games', width/4,250);
-    
+    textSize(70);
+    textFont (myFont);
+    text('Space Games', 100,250);
+  
     fill(255,255,255);
-    textSize(25);
-    textFont('CASTELLAR');
+    textSize(35);
     textAlign(LEFT);
-    text('1 - Space Race', 150,350);
-    text('2 - Space Evade', 150,400);
+    textFont(myFont1);
+    text('Press 1 for Space Race', 150,350);
+    text('Press 2 for Space Evade', 150,400);
+    textSize(30);
+    text('Made by Jimi and Zujan', 810,720);
+    image(gif2,50,575);
 
   // 1  
    if (keyCode == 49){ 
@@ -162,20 +162,20 @@ function drawUi(){
     
   fill(255,255,255);
   textSize(17);
-  textFont('CASTELLAR');
+  textFont(myFont2);
   textAlign(CENTER);
   text('Player I : '+ score, width/4,710);
 
   fill(255,255,255);
   textSize(17);
-  textFont('CASTELLAR');
+  textFont(myFont2);
   textAlign(CENTER);
   text('Player II : '+ score2, 900,710);
 
 
   fill(255,255,255);
   textSize(20);
-  textFont('CASTELLAR');
+  textFont(myFont2);
   textAlign(CENTER);
   text('TIME: '+ timer + ' s', width/2,100);
 
@@ -211,19 +211,19 @@ function gameOver(){
   if (score > score2){
     fill(213, 28, 28)
     textSize(20);
-    textFont("Prismatic")
+    // textFont("Prismatic")
     text("Player 1 heeft gewonnen!!!",  width/2,550)
   }
   else if(score2 > score){
     fill(213, 28, 28)
     textSize(20);
-    textFont("Prismatic")
+    // textFont("Prismatic")
     text("Player 2 heeft gewonnen!!!",  width/2,550)
   }
   else if(score == score2){
     fill(213, 28, 28)
     textSize(30);
-    textFont("Prismatic")
+    // textFont("Prismatic")
     text("draw!!!", width/2,550)
   }
   
@@ -231,7 +231,7 @@ function gameOver(){
   fill(255,255,255 );
   textSize(15);
   textAlign(LEFT);
-  textFont('Audiowide,bolder');
+  // textFont('Audiowide,bolder');
   text('Press Esc for menu', 100,50);
   // text('Press enter for again', 100, 100)
 
@@ -261,7 +261,7 @@ function gameOver2(){
   fill(255,255,255 );
   textSize(15);
   textAlign(LEFT);
-  textFont('Audiowide,bolder');
+  // textFont('Audiowide,bolder');
   text('Press Esc for menu', 100,50);
   text('Press enter for again', 100, 100)
 
@@ -300,16 +300,19 @@ function preload(){
   img8 = loadImage('img/Player2.png');
   img10 = loadImage('img/meteor.crdownload');
   img11 = loadImage('img/meteorite.png');
-  
+
   music = loadSound('HyperspaceThemeMusic.mp3');
 
- //  myfont1 = loadFont('assets/fipps.zip');
+  myFont = loadFont('fonts/ka1.ttf');
+  myFont1 = loadFont('fonts/VCR_OSD_MONO.ttf');
+  myFont2 = loadFont('fonts/Gameplay.ttf');
 
   
   gif = loadImage('assets/Moon.gif');
   gif1 = loadImage('assets/explosion.gif');
-}
+  gif2 = loadImage('assets/astronaut.gif');
 
+}
 
 function restart(){
   balls = [];
