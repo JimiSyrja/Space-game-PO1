@@ -39,23 +39,23 @@ function setup() {
 
     textAlign(CENTER);
 
-  ship3 = createSprite(300, height / 2);
-  ship3.maxSpeed = 6;
-  ship3.friction = 0.01;
-  ship3.addImage(SHIP_NORMAL, img12);
-  ship3.addAnimation(SHIP_THRUST, 'assets/asteroids_ship0002.png', 'assets/asteroids_ship0007.png');
+        ship3 = createSprite(300, height / 2);
+        ship3.maxSpeed = 6;
+        ship3.friction = 0.01;
+        ship3.addImage(SHIP_NORMAL, img12);
+        ship3.addAnimation(SHIP_THRUST,     'assets/asteroids_ship0002.png', 'assets/asteroids_ship0007.png');
 
-  ship4 = createSprite(width / 2, height / 2);
-  ship4.maxSpeed = 6;
-  ship4.friction = 0.01;
-  ship4.addImage(SHIP_NORMAL2, img14);
-  ship4.addAnimation(SHIP_THRUST2, 'assets/asteroids_ship0003.png', 'assets/asteroids_ship0006.png');
+        ship4 = createSprite(width / 2, height / 2);
+        ship4.maxSpeed = 6;
+        ship4.friction = 0.01;
+        ship4.addImage(SHIP_NORMAL2, img14);
+        ship4.addAnimation(SHIP_THRUST2, 'assets/asteroids_ship0003.png', 'assets/asteroids_ship0006.png');
 
 
-  bullets = new Group();
-  bullets2 = new Group();
+          bullets = new Group();
+          bullets2 = new Group();
   
-}
+    }
 
 function newBallsPlease(){
   //laat de asteroids random aantallen spawnen
@@ -159,8 +159,8 @@ function SpaceEvade() {
 }
 
 function SatisfyingSpaceArt() {
-  background(0);
-  drawUi2();
+    background(0);
+    drawUi2();
 }
 
 function menu(){
@@ -236,7 +236,6 @@ function drawUi(){
   // }
 }
 
-
 function drawUi1(){
   //Levens
   fill(255, 0,0);
@@ -250,81 +249,79 @@ function drawUi1(){
 }
 
 function drawUi2(){
-  //Levens
   fill(255,255,255);
   textAlign(CENTER);
   textSize(20); 
   text('CONTROLS: WASD + Spacebar' , 1000, 60);
   text('CONTROLS: ArrowKeys + Enter', 1000, 90);
 
-
-  for (var i = 0; i < allSprites.length; i++) {
-    var sprite = allSprites[i];
-    if (sprite.position.x < -MARGIN) {
-      sprite.position.x = width+MARGIN;
+      for (var i = 0; i < allSprites.length; i++) {
+       var sprite = allSprites[i];
+      if (sprite.position.x < -MARGIN) {
+          sprite.position.x = width+MARGIN;
+       }
+      if (sprite.position.x > width + MARGIN) {
+          sprite.position.x = -MARGIN;
+       }
+      if (sprite.position.y < -MARGIN) {
+          sprite.position.y = height + MARGIN;
+      }
+       if (sprite.position.y > height + MARGIN) {
+           sprite.position.y = -MARGIN;
+      }
     }
-    if (sprite.position.x > width + MARGIN) {
-      sprite.position.x = -MARGIN;
-    }
-    if (sprite.position.y < -MARGIN) {
-      sprite.position.y = height + MARGIN;
-    }
-    if (sprite.position.y > height + MARGIN) {
-      sprite.position.y = -MARGIN;
-    }
-  }
 
   
-  if (keyDown(LEFT_ARROW)) {
-    ship3.rotation -= 4;
-  }
-  if (keyDown(RIGHT_ARROW)) {
-    ship3.rotation += 4;
-  }
+    if (keyDown(LEFT_ARROW)) {
+      ship3.rotation -= 4;
+    }
+    if (keyDown(RIGHT_ARROW)) {
+      ship3.rotation += 4;
+    }
 
-  if (keyDown(UP_ARROW)) {
-    ship3.addSpeed(0.2, ship3.rotation);
-    ship3.changeAnimation(SHIP_THRUST);
-  } else {
-    ship3.changeAnimation(SHIP_NORMAL);
-  }
-
-  if (keyDown('Enter')) {
-    var bullet = createSprite(ship3.position.x, ship3.position.y);
-    bullet.addImage(img13);
-    bullet.setSpeed(10 + ship3.getSpeed(), ship3.rotation);
-    bullet.life = 100;
-    bullets.add(bullet);
-  }
+    if (keyDown(UP_ARROW)) {
+      ship3.addSpeed(0.2, ship3.rotation);
+      ship3.changeAnimation(SHIP_THRUST);
+    } else {
+      ship3.changeAnimation(SHIP_NORMAL);
+    }
+  
+      if (keyDown('Enter')) {
+      var bullet = createSprite(ship3.position.x, ship3.position.y);
+      bullet.addImage(img13);
+      bullet.setSpeed(10 + ship3.getSpeed(), ship3.rotation);
+      bullet.life = 100;
+      bullets.add(bullet);
+      }
 
 
     
-    if (keyDown(65)) {
-    ship4.rotation -= 4;
-  }
-  if (keyDown(68)) {
-    ship4.rotation += 4;
-  }
+      if (keyDown(65)) {
+        ship4.rotation -= 4;
+     }
+      if (keyDown(68)) {
+        ship4.rotation += 4;
+      }
 
-  if (keyDown(87)) {
-    ship4.addSpeed(0.2, ship4.rotation);
-    ship4.changeAnimation(SHIP_THRUST2);
-  } else {
-    ship4.changeAnimation(SHIP_NORMAL2);
-  }
+      if (keyDown(87)) {
+        ship4.addSpeed(0.2, ship4.rotation);
+        ship4.changeAnimation(SHIP_THRUST2);
+      } else {
+        ship4.changeAnimation(SHIP_NORMAL2);
+    }
 
-  if (keyDown('Space')) {
-    var bullet2 = createSprite(ship4.position.x, ship4.position.y);
-    bullet2.addImage(img15);
-    bullet2.setSpeed(10 + ship4.getSpeed(), ship4.rotation);
-    bullet2.life = 100;
-    bullets2.add(bullet2);
-  }
+       if (keyDown('Space')) {
+       var bullet2 = createSprite(ship4.position.x, ship4.position.y);
+        bullet2.addImage(img15);
+        bullet2.setSpeed(10 + ship4.getSpeed(), ship4.rotation);
+        bullet2.life = 100;
+        bullets2.add(bullet2);
+    }
 
-  drawSprites();
+    drawSprites();
 
   
-}
+  }
 
 function gameOver(){
   background(img4)
