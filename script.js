@@ -7,7 +7,7 @@ var lives4 = 5;
 var score = 0;
 var score2 = 0;
 var timer = 75;
-var gameState = 3;
+var gameState = 0;
 var meteors = [];
 var meteors2 = [];
 let gif;
@@ -45,7 +45,7 @@ function newBallsPlease(){
 
 function draw() {
     if(gameState == 0){
-    menu();
+    menu(); 
   } else if(gameState == 1){
     SpaceRace(); 
   } else if(gameState == 2){
@@ -56,16 +56,14 @@ function draw() {
 }
 
 function SpaceRace(){
-  
   background(img5);
   drawUi();
-    
+  
   balls.forEach(b => {
   b.draw();
   b.checkCollision();
    });
 
-  
   ship.draw();
   ship.moveShip1();
   ship2.draw();
@@ -130,9 +128,10 @@ function menu(){
     background (gif)
     fill(4, 44, 220 );
     textSize(60);
+    textFont('myfont1');
     textAlign(CENTER);
-   // text('Space Games', width/4,250);
-    textFont(myfont1);
+    text('Space Games', width/4,250);
+    
     fill(255,255,255);
     textSize(25);
     textFont('CASTELLAR');
@@ -146,6 +145,7 @@ function menu(){
     timer = 75;
     music.play();
     restart();
+     //wait(1000);
      }
    if(keyCode == 50){
      gameState = 2
@@ -179,6 +179,7 @@ function drawUi(){
     timer -= 1;
   }
 
+  
   // if ( timer <= 0){
   //   gameState = 3;
   //    music.play();
@@ -199,7 +200,6 @@ function drawUi1(){
   image(img6, 1140,27,50,50)
   image(img6, 1140,80,50,50)
 }
-
 
 function gameOver(){
   background(img4)
@@ -285,7 +285,7 @@ function preload(){
   
   music = loadSound('HyperspaceThemeMusic.mp3');
 
-  //fontPixel = loadFont('assets/fipps.zip');
+  // myfont1 = loadFont('assets/fipps.zip');
 
   
   gif = loadImage('assets/Moon.gif');
