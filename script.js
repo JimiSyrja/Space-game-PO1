@@ -252,8 +252,10 @@ function drawUi2(){
   fill(255,255,255);
   textAlign(CENTER);
   textSize(20); 
+  textFont(myFont2);
   text('CONTROLS: WASD + Spacebar' , 1000, 60);
   text('CONTROLS: ArrowKeys + Enter', 1000, 90);
+  text('Press esc for menu', 130, 40);
 
       for (var i = 0; i < allSprites.length; i++) {
        var sprite = allSprites[i];
@@ -320,7 +322,11 @@ function drawUi2(){
 
     drawSprites();
 
-  
+      if (keyCode == 27){
+      gameState = 0;
+      restart();
+      music.stop();
+     }  
   }
 
 function gameOver(){
