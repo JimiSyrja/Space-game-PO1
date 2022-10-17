@@ -103,7 +103,7 @@ function SpaceRace(){
   ship.moveShip1();
   ship2.draw();
   ship2.moveShip2();
-  ship2.checkCollision();
+  //ship2.checkCollision();
 
   if (keyCode == 27){
     gameState = 0
@@ -133,7 +133,9 @@ function SpaceEvade() {
   }
 
   meteors.forEach((m) => {
-    m.draw(); 
+    m.draw();
+    m.checkCollision();
+    m.checkCollision2();
   });
 
   
@@ -142,7 +144,6 @@ function SpaceEvade() {
   ship2.drawGame2();
   ship2.move(); 
   ship.checkCollision();
-  meteor.checkCollision2();
   
   if (lives3 <= 0){
     gameState = 5;
@@ -366,6 +367,7 @@ function gameOver2(){
   
   fill(255,255,255 );
   textSize(15);
+  textFont(myFont2);
   textAlign(LEFT);
   // textFont('Audiowide,bolder');
   text('Press Esc for menu', 100,50);

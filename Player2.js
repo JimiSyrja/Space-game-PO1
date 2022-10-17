@@ -56,11 +56,11 @@ class Player2 {
    }
   }
   
-  checkCollision(){ 
-  if (this.xpos4 >= ship2.xpos2 && this.xpos4 <= (ship2.xpos2 + ship2.playerWidth2) &&
-      this.ypos4 >= ship2.ypos2 && this.ypos4 <= (ship2.ypos2 + ship2.playerHeight2)) {
-    lives4 = lives4 -1;
-      console.log("hit")
-    }
-  }
-}
+//   checkCollision(){ 
+//   if (this.xpos4 >= ship2.xpos2 && this.xpos4 <= (ship2.xpos2 + ship2.playerWidth2) &&
+//       this.ypos4 >= ship2.ypos2 && this.ypos4 <= (ship2.ypos2 + ship2.playerHeight2)) {
+//     lives4 = lives4 -1;
+//       console.log("hit")
+//     }
+//   }
+ }
