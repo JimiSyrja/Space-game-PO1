@@ -3,7 +3,7 @@ class Player2 {
     this.playerHeight2 = 30;
     this.playerWidth2 = 25;
     this.xpos2 = 900;
-    this.ypos2 = 625;
+    this.ypos2 = 635;
     this.speed2 = 5;
   }
 
@@ -12,7 +12,7 @@ class Player2 {
     
     if(ship2.ypos2 < 0){
      ship2.xpos2 = 900
-     ship2.ypos2 = 675
+     ship2.ypos2 = 635
       score2 = score2 + 1;
     }
     if(ship2.ypos2 > 700){
@@ -55,15 +55,12 @@ class Player2 {
      this.xpos2 += this.speed2;
    }
   }
-  // checkCollision(){
-
-  // if (this.xpos >= ship.xpos && this.xpos <= (ship.xpos + ship.playerWidth) &&
-  //     this.ypos >= ship.ypos && this.ypos <= (ship.ypos + ship.playerHeight)) {
-  //     ship2.xpos2 = 900; 
-  //     ship2.ypos2 = 675;
-  //     ship.xpos = 300;
-  //     ship.ypos = 675;
-  //     console.log("hit")
-  //   }
-  //  
+  
+  checkCollision(){ 
+  if (this.xpos4 >= ship2.xpos2 && this.xpos4 <= (ship2.xpos2 + ship2.playerWidth2) &&
+      this.ypos4 >= ship2.ypos2 && this.ypos4 <= (ship2.ypos2 + ship2.playerHeight2)) {
+    lives4 = lives4 -1;
+      console.log("hit")
+    }
+  }
 }

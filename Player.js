@@ -3,7 +3,7 @@ class Player {
     this.playerHeight = 35;
     this.playerWidth = 25;
     this.xpos = 300;
-    this.ypos = 625;
+    this.ypos = 635;
     this.speed = 5;
   }
 
@@ -12,7 +12,7 @@ class Player {
     
     if(ship.ypos < 0){
      ship.xpos = 300
-     ship.ypos = 675
+     ship.ypos = 635
       score = score + 1;
     }
     if(ship.ypos > 700){
@@ -54,6 +54,14 @@ class Player {
       } if (keyIsDown(68)){
         this.xpos += this.speed;
       }
+  }
+
+  checkCollision(){
+     if (this.xpos >= meteor.x4 && this.xpos <= (meteor.x4 + meteor.width4) &&
+    this.ypos >= meteor.y4 && this.ypos <= (meteor.y4 + meteor.height4)){
+      lives3 = lives3 -1;
+      console.log("hit")
+     }
   }
 }
 

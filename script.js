@@ -1,4 +1,5 @@
 var balls = [];
+var ball2;
 var ship;
 var ship2;
 var meteor;
@@ -7,7 +8,7 @@ var lives3 = 5;
 var lives4 = 5;
 var score = 0;
 var score2 = 0;
-var timer = 75;
+var timer = 100;
 var gameState = 0;
 var meteors = [];
 var meteors2 = [];
@@ -24,7 +25,6 @@ var bullets2;
 var MARGIN = 40;
 var SHIP_NORMAL = 'normal';
 var SHIP_THRUST = 'thrust';
-
 var SHIP_NORMAL2 = 'normal';
 var SHIP_THRUST2 = 'thrust';
 
@@ -33,7 +33,7 @@ function setup() {
 
     ship = new Player();
     ship2 = new Player2();
-    // meteor = new Ball2();
+    meteor = new Meteor();
   
     newBallsPlease()
 
@@ -115,7 +115,7 @@ function SpaceRace(){
   }   
 
    if ( timer <= 0){
-    gameState = 3;
+    gameState = 4;
     music.stop();
     balls = [];
      
@@ -130,26 +130,25 @@ function SpaceEvade() {
   if(frameCount % 5 == 0){
     // spawn!
     meteors.push(new Meteor());
-    if (this.y > 725){
-      
-    }
   }
 
   meteors.forEach((m) => {
     m.draw(); 
   });
 
-  ship.checkCollision2();
+  
   ship.drawGame2();
   ship.move();
   ship2.drawGame2();
   ship2.move(); 
-
+  ship.checkCollision();
+  meteor.checkCollision2();
+  
   if (lives3 <= 0){
-    gameState = 4;
+    gameState = 5;
   }
   if (lives4 <= 0){
-    gameState = 4;
+    gameState = 5;
   }
   if (keyCode == 27){
     gameState = 0
@@ -184,10 +183,9 @@ function menu(){
   // 1  
    if (keyCode == 49){ 
     gameState = 1
-    timer = 75;
+    timer = 100;
     music.play();
     restart();
-     //wait(1000);
      }
    if(keyCode == 50){
      gameState = 2
@@ -227,13 +225,7 @@ function drawUi(){
   }
 
   
-  // if ( timer <= 0){
-  //   gameState = 3;
-  //    music.play();
-  //   // background(0);
-  //   balls = [];
-  //   // text = [];
-  // }
+
 }
 
 function drawUi1(){
@@ -324,7 +316,6 @@ function drawUi2(){
 
       if (keyCode == 27){
       gameState = 0;
-      restart();
       music.stop();
      }  
   }
@@ -334,28 +325,28 @@ function gameOver(){
   
   if (score > score2){
     fill(213, 28, 28)
+    textFont(myFont2);
     textSize(20);
-    // textFont("Prismatic")
     text("Player 1 heeft gewonnen!!!",  width/2,550)
   }
   else if(score2 > score){
     fill(213, 28, 28)
+    textFont(myFont2);
     textSize(20);
-    // textFont("Prismatic")
     text("Player 2 heeft gewonnen!!!",  width/2,550)
   }
   else if(score == score2){
     fill(213, 28, 28)
+    textFont(myFont2);
     textSize(30);
-    // textFont("Prismatic")
     text("draw!!!", width/2,550)
   }
   
 
   fill(255,255,255 );
-  textSize(15);
+  textSize(22);
+  textFont(myFont2);
   textAlign(LEFT);
-  // textFont('Audiowide,bolder');
   text('Press Esc for menu', 100,50);
   // text('Press enter for again', 100, 100)
 
@@ -368,15 +359,6 @@ function gameOver(){
     music.stop();
     newBallsPlease();
   }
-  // if (keyCode == 13){
-  //   gameState = 1
-  //   score = 0;
-  //   score2 = 0;
-  //   balls = [];
-  //   newBallsPlease();
-    //Deze werkt niet goed: Bij elk spel gaat die again naar Space Race
-  //}
-
 }
 
 function gameOver2(){
